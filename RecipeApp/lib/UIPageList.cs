@@ -4,5 +4,6 @@ using System.Text;
 
 namespace RecipeApp.lib {
   class UIPageList {
+        string empty;
   }
 }
