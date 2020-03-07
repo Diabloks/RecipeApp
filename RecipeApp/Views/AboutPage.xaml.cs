@@ -13,6 +13,7 @@ namespace RecipeApp.Views
         public AboutPage()
         {
             InitializeComponent();
+            string test;
         }
     }
 }
