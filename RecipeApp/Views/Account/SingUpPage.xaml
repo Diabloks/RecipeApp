@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RecipeApp.Views.SingUpPage">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView HorizontalOptions="Center">
+                <ScrollView.VerticalOptions>
+                    <OnIdiom
+                        x:TypeArguments="LayoutOptions"
+                        Default="CenterAndExpand"
+                        Phone="FillAndExpand" />
+                </ScrollView.VerticalOptions>
+                <StackLayout
+                    Margin=" PhonePortrait='20,32',
+                                                                 PhoneLandscape='150,32',
+                                                                 TabletPortrait='200,50',
+                                                                 TabletLandscape='300,50',
+                                                                 Desktop='30'}"
+                    Spacing="0"
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="{OnPlatform Default='-1',
+                                              UWP='350'}">
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Spacing="24"
+                        VerticalOptions="CenterAndExpand">
+
+                        <!--  Label to display the title of this page  -->
+                        <Label
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="Sign Up" />
+
+                        <!--  Label to display the description of this page  -->
+                        <Label
+                            Margin="0,-16,0,8"      
+                            HorizontalTextAlignment="Center"
+                            Text="Create an account to start doing more" />
+                        <Entry Placeholder="Name">
+                        </Entry>
+                        <Entry Placeholder="Email">
+                        </Entry>
+                        <Entry Placeholder="Password">
+                        </Entry>
+                        <Entry Placeholder="Confirm password">
+                        </Entry>
+
+
+                        <Button
+                            Command="{Binding SignUpCommand}"
+                            CornerRadius="20"
+                            Text="REGISTER" />
+                    </StackLayout>
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        Spacing="1"
+                        VerticalOptions="End">
+
+
+
+                        <Label  
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Text="Already have an account?"
+                            VerticalTextAlignment="Center" />
+
+                        <Button
+                            CornerRadius="4" 
+                            Text="Log In" />
+
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
