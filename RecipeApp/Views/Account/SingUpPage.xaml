@@ -15,15 +15,7 @@
                         Phone="FillAndExpand" />
                 </ScrollView.VerticalOptions>
                 <StackLayout
-                    Margin=" PhonePortrait='20,32',
-                                                                 PhoneLandscape='150,32',
-                                                                 TabletPortrait='200,50',
-                                                                 TabletLandscape='300,50',
-                                                                 Desktop='30'}"
-                    Spacing="0"
-                    VerticalOptions="FillAndExpand"
-                    WidthRequest="{OnPlatform Default='-1',
-                                              UWP='350'}">
+                   >
                     <Grid RowSpacing="24" VerticalOptions="CenterAndExpand">
 
                         <Grid.RowDefinitions>
