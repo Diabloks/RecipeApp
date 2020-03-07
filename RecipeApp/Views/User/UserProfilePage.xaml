@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              mc:Ignorable="d"
              x:Class="RecipeApp.Views.User.UserProfilePage">
     <ContentPage.Content>
@@ -25,7 +27,7 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <SfBorder
+                    <border:SfBorder
                     Grid.Row="0"
                     Grid.Column="0"
                     Margin="16,0,0,24"
@@ -44,14 +46,11 @@
                         Aspect="AspectFill"
                         BackgroundColor="{DynamicResource Gray-200}"
                         HeightRequest="80"
+                            Source="C:\Users\Kirill\source\repos\RecipeApp\RecipeApp\Resources\img\Ishrana-UVOD.jpg"
                         WidthRequest="80">
-                            <Image.Source>
-                                <UriImageSource Uri="{Binding ProfileImage}" 
-			                                 CacheValidity="14" 
-			                                 CachingEnabled="true"/>
-                            </Image.Source>
+                            
                         </Image>
-                    </SfBorder>
+                    </border:SfBorder>
 
                     <StackLayout
                     Grid.Row="0"
@@ -78,7 +77,7 @@
                         Spacing="5">
 
                             <!--  Designation label  -->
-                            <Label Style="{StaticResource ContentLabelStyle}" Text="{Binding Designation}" />
+                            <Label  Text="Something about me" />
 
                             <BoxView Style="{StaticResource BoxViewStyle}" />
 
@@ -112,42 +111,42 @@
                             Grid.Row="0"
                             Grid.Column="0"
                             Style="{StaticResource FollowerCountLabelStyle}"
-                            Text="{Binding PostsCount}" />
+                            Text="666" />
 
                             <!--  Post title label  -->
                             <Label
                             Grid.Row="1"
                             Grid.Column="0"
                             Style="{StaticResource FollowerTitleLabelStyle}"
-                            Text="Posts" />
+                            Text="Recipes" />
 
                             <!--  Followers count label  -->
                             <Label
                             Grid.Row="0"
                             Grid.Column="1"
                             Style="{StaticResource FollowerCountLabelStyle}"
-                            Text="{Binding FollowersCount}" />
+                            Text="666" />
 
                             <!--  Followers title label  -->
                             <Label
                             Grid.Row="1"
                             Grid.Column="1"
                             Style="{StaticResource FollowerTitleLabelStyle}"
-                            Text="Followers" />
+                            Text="Comments" />
 
                             <!--  Following count label  -->
                             <Label
                             Grid.Row="0"
                             Grid.Column="2"
                             Style="{StaticResource FollowerCountLabelStyle}"
-                            Text="{Binding FollowingCount}" />
+                            Text="100500" />
 
                             <!--  Following title label  -->
                             <Label
                             Grid.Row="1"
                             Grid.Column="2"
                             Style="{StaticResource FollowerTitleLabelStyle}"
-                            Text="Following" />
+                            Text="Что-то еще" />
 
                         </Grid>
 
@@ -157,23 +156,41 @@
                     <Label
                     Grid.Row="1"
                     Grid.ColumnSpan="2"
-                    Text="About" 
+                    Text="Можно это как то назвать" 
                     FontSize="14"                     
                     Margin="16,0,0,4" 
+                       HorizontalTextAlignment="Center"
                     Style="{StaticResource TitleLabelStyle}"/>
 
-                    <!--  About label  -->
-                    <Label
-                    Grid.Row="2"
+                    <StackLayout
+                        Grid.Row="2"
                     Grid.ColumnSpan="2"
-                    Text="{Binding About}" 
-                    FontSize="12" 
-                    FontFamily="{StaticResource Montserrat-Medium}"
-                    LineHeight="{OnPlatform Default=-1, Android=1.5}"
-                    Margin="16,0,16,24" 
-                    HorizontalOptions="Start" 
-                    HorizontalTextAlignment="Start" 
-                    TextColor="{DynamicResource Gray-700}" />
+                        >
+                        <buttons:SfButton
+                            CornerRadius="3"
+                            Text="Мои рецепты"
+                            Margin="30,0,30,0">
+                            
+                        </buttons:SfButton>
+                        <buttons:SfButton
+                            CornerRadius="3"
+                            Text="Избранное"
+                            Margin="30,0,30,0">
+
+                        </buttons:SfButton>
+                        <buttons:SfButton
+                            CornerRadius="3"
+                            Text="Редактировать профиль"
+                            Margin="30,0,30,0">
+
+                        </buttons:SfButton>
+                        <buttons:SfButton
+                            CornerRadius="3"
+                            Text="Настройки"
+                            Margin="30,0,30,0">
+
+                        </buttons:SfButton>
+                    </StackLayout>
 
                    
 
