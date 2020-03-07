@@ -24,37 +24,55 @@
                     VerticalOptions="FillAndExpand"
                     WidthRequest="{OnPlatform Default='-1',
                                               UWP='350'}">
-                    <StackLayout
-                        HorizontalOptions="Center"
-                        Spacing="24"
-                        VerticalOptions="CenterAndExpand">
+                    <Grid RowSpacing="24" VerticalOptions="CenterAndExpand">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
                         <!--  Label to display the title of this page  -->
                         <Label
                             FontSize="20"
+                            Grid.Row="1"
                             HorizontalOptions="Center"
                             Text="Sign Up" />
 
                         <!--  Label to display the description of this page  -->
                         <Label
+                            Grid.Row="2"
                             Margin="0,-16,0,8"      
                             HorizontalTextAlignment="Center"
                             Text="Create an account to start doing more" />
-                        <Entry Placeholder="Name">
+                        <Entry Placeholder="Name"
+                            Grid.Row="3">
                         </Entry>
-                        <Entry Placeholder="Email">
+                        <Entry Placeholder="Email"
+                            Grid.Row="4">
                         </Entry>
-                        <Entry Placeholder="Password">
+                        <Entry Placeholder="Password"
+                            Grid.Row="5">
                         </Entry>
-                        <Entry Placeholder="Confirm password">
+                        <Entry Placeholder="Confirm password"
+                               Grid.Row="6">
                         </Entry>
 
 
                         <Button
+                            Grid.Row="7"
                             Command="{Binding SignUpCommand}"
                             CornerRadius="20"
                             Text="REGISTER" />
-                    </StackLayout>
+                    </Grid>
+
+                        
+                    
                     <StackLayout
                         HorizontalOptions="Center"
                         Orientation="Horizontal"
