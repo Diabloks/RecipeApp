@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              mc:Ignorable="d"
              x:Class="RecipeApp.Views.SingUpPage">
     <ContentPage.Content>
@@ -14,7 +15,8 @@
                         Default="CenterAndExpand"
                         Phone="FillAndExpand" />
                 </ScrollView.VerticalOptions>
-                <StackLayout>
+                <StackLayout
+                   >
                     <Grid RowSpacing="24" VerticalOptions="CenterAndExpand">
 
                         <Grid.RowDefinitions>
@@ -41,26 +43,31 @@
                             Margin="0,-16,0,8"      
                             HorizontalTextAlignment="Center"
                             Text="Create an account to start doing more" />
-                        <Entry
-                            x:Name="login"
-                            Placeholder="Name"
+                        <inputLayout:SfTextInputLayout 
+                            Hint="Name"
+                            ContainerType="None"
                             Grid.Row="3">
-                        </Entry>
-                        <Entry
-                            x:Name="email"
-                            Placeholder="Email"
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout 
+                            Hint="Email"
+                            ContainerType="None"
+                            
                             Grid.Row="4">
-                        </Entry>
-                        <Entry
-                            x:Name="password"
-                            Placeholder="Password"
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout 
+                            Hint="Password"
+                            HelperText="Enter 5 to 8 characters"
+                            CharMaxLength="8"
+                            EnablePasswordVisibilityToggle="true"
+                            ContainerType="None"
                             Grid.Row="5">
-                        </Entry>
-                        <Entry
-                            x:Name="confirmPass"
-                            Placeholder="Confirm password"
-                            Grid.Row="6">
-                        </Entry>
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout 
+                            Hint="Confirm password"
+                            EnablePasswordVisibilityToggle="true"
+                             ContainerType="None"                           
+                               Grid.Row="6">
+                        </inputLayout:SfTextInputLayout>
 
 
                         <Button

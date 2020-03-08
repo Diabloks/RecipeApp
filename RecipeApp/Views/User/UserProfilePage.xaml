@@ -187,7 +187,8 @@
                         <buttons:SfButton
                             CornerRadius="3"
                             Text="Настройки"
-                            Margin="30,0,30,0">
+                            Margin="30,0,30,0"
+                            >
 
                         </buttons:SfButton>
                     </StackLayout>
