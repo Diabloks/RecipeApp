@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              mc:Ignorable="d"
              x:Class="RecipeApp.Views.SingUpPage">
     <ContentPage.Content>
@@ -43,31 +42,18 @@
                             Margin="0,-16,0,8"      
                             HorizontalTextAlignment="Center"
                             Text="Create an account to start doing more" />
-                        <inputLayout:SfTextInputLayout 
-                            Hint="Name"
-                            ContainerType="None"
+                        <Entry Placeholder="Name"
                             Grid.Row="3">
-                        </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout 
-                            Hint="Email"
-                            ContainerType="None"
-                            
+                        </Entry>
+                        <Entry Placeholder="Email"
                             Grid.Row="4">
-                        </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout 
-                            Hint="Password"
-                            HelperText="Enter 5 to 8 characters"
-                            CharMaxLength="8"
-                            EnablePasswordVisibilityToggle="true"
-                            ContainerType="None"
+                        </Entry>
+                        <Entry Placeholder="Password"
                             Grid.Row="5">
-                        </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout 
-                            Hint="Confirm password"
-                            EnablePasswordVisibilityToggle="true"
-                             ContainerType="None"                           
+                        </Entry>
+                        <Entry Placeholder="Confirm password"
                                Grid.Row="6">
-                        </inputLayout:SfTextInputLayout>
+                        </Entry>
 
 
                         <Button
