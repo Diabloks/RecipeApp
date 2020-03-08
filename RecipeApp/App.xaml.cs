@@ -14,7 +14,8 @@ namespace RecipeApp
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+      MainPage = new RecipeApp.Views.SingUpPage();
+      
         }
 
         protected override void OnStart()
