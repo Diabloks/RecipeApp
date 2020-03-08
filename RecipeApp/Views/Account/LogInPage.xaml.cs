@@ -9,7 +9,7 @@ using Xamarin.Forms.Xaml;
 
 namespace RecipeApp.Views {
   [XamlCompilation(XamlCompilationOptions.Compile)]
-  public partial class LogInPage : ContentView {
+  public partial class LogInPage : ContentPage {
     public LogInPage() {
       InitializeComponent();
     }

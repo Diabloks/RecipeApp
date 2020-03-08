@@ -15,8 +15,7 @@
                         Default="CenterAndExpand"
                         Phone="FillAndExpand" />
                 </ScrollView.VerticalOptions>
-                <StackLayout
-                   >
+                <StackLayout>
                     <Grid RowSpacing="24" VerticalOptions="CenterAndExpand">
 
                         <Grid.RowDefinitions>
@@ -47,26 +46,29 @@
                             Hint="Name"
                             ContainerType="None"
                             Grid.Row="3">
+                            <Entry x:Name="login"></Entry>
                         </inputLayout:SfTextInputLayout>
                         <inputLayout:SfTextInputLayout 
                             Hint="Email"
                             ContainerType="None"
-                            
                             Grid.Row="4">
+                            <Entry x:Name="email"></Entry>
                         </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout 
+                        <inputLayout:SfTextInputLayout
                             Hint="Password"
                             HelperText="Enter 5 to 8 characters"
                             CharMaxLength="8"
                             EnablePasswordVisibilityToggle="true"
                             ContainerType="None"
                             Grid.Row="5">
+                            <Entry x:Name="password"></Entry>
                         </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout 
+                        <inputLayout:SfTextInputLayout
                             Hint="Confirm password"
                             EnablePasswordVisibilityToggle="true"
                              ContainerType="None"                           
                                Grid.Row="6">
+                            <Entry x:Name="confirmPass"></Entry>
                         </inputLayout:SfTextInputLayout>
 
 
@@ -97,7 +99,8 @@
 
                         <Button
                             CornerRadius="4" 
-                            Text="Log In" />
+                            Text="Log In"
+                            Clicked="LogIn_Clicked"/>
 
                     </StackLayout>
                 </StackLayout>

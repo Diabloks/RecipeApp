@@ -29,7 +29,7 @@ namespace RecipeApp.Views {
                 var response = client.UploadValues(uri, "POST" ,parameters);
                 client.UploadValuesCompleted += client_UploadValuesComplited;
                 string json = Encoding.UTF8.GetString(response);
-                login.Text = json;
+                //login.Text = json;
             }
     }
 
@@ -39,5 +39,10 @@ namespace RecipeApp.Views {
 
             //int.TryParse(id, out newID);
     }
+
+    public void LogIn_Clicked(object sender, EventArgs e)
+        {
+            
+        }
   }
 }
