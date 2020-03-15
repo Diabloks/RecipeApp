@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="RecipeApp.Views.Account.SignUpPage">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView HorizontalOptions="Center">
+                <ScrollView.VerticalOptions>
+                    <OnIdiom
+                        x:TypeArguments="LayoutOptions"
+                        Default="CenterAndExpand"
+                        Phone="FillAndExpand" />
+                </ScrollView.VerticalOptions>
+                <StackLayout>
+                    <Grid RowSpacing="24" VerticalOptions="CenterAndExpand">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <!--  Label to display the title of this page  -->
+                        <Label
+                            FontSize="20"
+                            Grid.Row="1"
+                            HorizontalOptions="Center"
+                            Text="Sign Up" />
+
+                        <!--  Label to display the description of this page  -->
+                        <Label
+                            Grid.Row="2"
+                            Margin="0,-16,0,8"      
+                            HorizontalTextAlignment="Center"
+                            Text="Create an account to start doing more" />
+                        <Entry 
+                            Grid.Row="3"
+                            x:Name="login">
+
+                        </Entry>
+                        <Entry  
+                            
+                            Grid.Row="4"
+                            x:Name="email"></Entry>
+                        <Entry 
+                            
+                            Grid.Row="5"
+                            x:Name="password"></Entry>
+                        
+                        <Entry 
+                                                     
+                               Grid.Row="6"
+                            x:Name="confirmPass"></Entry>
+                        
+
+
+                        <Button
+                            x:Name="Button_Register"
+                            Grid.Row="7"
+                            Clicked="SignUp_Clicked"
+                            CornerRadius="20"
+                            Text="REGISTER" />
+                    </Grid>
+
+                        
+                    
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        Spacing="1"
+                        VerticalOptions="End">
+
+
+
+                        <Label  
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Text="Already have an account?"
+                            VerticalTextAlignment="Center" />
+
+                        <Button
+                            CornerRadius="4" 
+                            Text="Log In"
+                            Clicked="LogIn_Clicked"/>
+
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

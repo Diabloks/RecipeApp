@@ -1,20 +1,15 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using RecipeApp.Services;
-using RecipeApp.Views;
 
 namespace RecipeApp
 {
     public partial class App : Application
     {
-
         public App()
         {
             InitializeComponent();
-            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
-            //MainPage = new RecipeApp.Views.SingUpPage();
         }
 
         protected override void OnStart()

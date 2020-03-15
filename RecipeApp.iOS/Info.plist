@@ -25,7 +25,7 @@
     <key>CFBundleDisplayName</key>
     <string>RecipeApp</string>
     <key>CFBundleIdentifier</key>
-    <string>com.companyname.RecipeApp</string>
+    <string>com.fgroup.RecipeApp</string>
     <key>CFBundleVersion</key>
     <string>1.0</string>
     <key>UILaunchStoryboardName</key>
