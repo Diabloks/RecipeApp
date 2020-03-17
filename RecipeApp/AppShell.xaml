@@ -6,6 +6,8 @@
        mc:Ignorable="d"
        xmlns:local="clr-namespace:RecipeApp;assembly=RecipeApp"
        xmlns:account="clr-namespace:RecipeApp.Views.Account"
+       xmlns:main="clr-namespace:RecipeApp.Views.Main"
+       
        Title="RecipeApp"
        x:Class="RecipeApp.AppShell">
 
@@ -33,7 +35,7 @@
     <!-- Your Pages -->
     <TabBar>
         <Tab Icon="iconsmain.tiff">
-            <ShellContent Icon="iconsMainActive.png" ContentTemplate="{DataTemplate local:MainPage}" />
+            <ShellContent Icon="iconsMainActive.png" ContentTemplate="{DataTemplate main:MainPage}" />
         </Tab>
         <Tab Title="Search" Icon="">
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
