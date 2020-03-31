@@ -34,19 +34,19 @@
 
     <!-- Your Pages -->
     <TabBar>
-        <Tab Icon="iconsmain.tiff">
-            <ShellContent Icon="iconsMainActive.png" ContentTemplate="{DataTemplate main:MainPage}" />
+        <Tab Title=""> <!--Home-->
+            <ShellContent ContentTemplate="{DataTemplate main:MainPage}" />
         </Tab>
-        <Tab Title="Search" Icon="">
+        <Tab Title=""> <!--Search-->
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
-        <Tab Title="Add" Icon="tab_feed.png">
+        <Tab Title=""> <!--Add-->
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
-        <Tab Title="Favorite" Icon="tab_feed.png">
+        <Tab Title=""> <!--Favorite-->
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
-        <Tab Title="Profile" Icon="iconsuser.ico">
+        <Tab Title=""> <!--Profile-->
             <ShellContent ContentTemplate="{DataTemplate account:SignUpPage}" />
         </Tab>
     </TabBar>
