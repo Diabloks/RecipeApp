@@ -13,10 +13,14 @@ namespace RecipeApp.Views.Main {
   [XamlCompilation(XamlCompilationOptions.Compile)]
   
   public partial class MainPage : ContentPage {
-    public List<Recipie> AllRecipies { get; set; } 
+    public List<Recipie> AllRecipies { get; set; }
+    public List<Category> AllCategories { get; set; }
+    public List<Character> AllCharacters { get; set; }
+    public List<TimeModel> AllTimes { get; set; }
+    public bool FrameVisibility = false;
     public MainPage() {
       InitializeComponent();
-    
+      FrameFilter.IsVisible = FrameVisibility;
 
     }
 
@@ -27,10 +31,24 @@ namespace RecipeApp.Views.Main {
 
        AllRecipies = new List<Recipie>(Recipies.Get());
       RecipiesCollectionView.ItemsSource = AllRecipies;
+      AllTimes = new List<TimeModel>(TimeModels.Get());
+      TimeCollectionView.ItemsSource = AllTimes;
+      AllCategories = new List<Category>(Categories.Get());
+      CategoryCollectionView.ItemsSource = AllCategories;
+      AllCharacters = new List<Character>(Characters.Get());
+      CharacterCollectionView.ItemsSource = AllCharacters;
 
     }
      void FilterClicked(object sender, EventArgs args) {
-      // MainPage = RecipeApp.Views.Main.MainShell();
+      if (FrameVisibility == false) {
+        FrameVisibility = true;
+        FilterButton.IsVisible = false;
+      }
+      else {
+        FrameVisibility = false;
+        FilterButton.IsVisible = true;
+      }
+      FrameFilter.IsVisible = FrameVisibility;
     }
   }
 }

@@ -68,13 +68,14 @@
                         FontSize="30"
                         Grid.Row="2"
                         Grid.Column="0"></Label>
-                    <Button
+                    <Button x:Name="FilterButton"
                         BackgroundColor="Aqua"
                         Grid.Column="1"
                         Grid.Row="2"
                         WidthRequest="60"
                         Text="button"
                         Clicked="FilterClicked"
+                        
                         ></Button>
                         <StackLayout
                             
@@ -128,7 +129,7 @@
                                                     Grid.Row="1"
                                                     Grid.ColumnSpan="3"
                                                     Source="{Binding ImageUrl}"
-                                                    Aspect="Fill"
+                                                    Aspect="AspectFill"
                                                     HorizontalOptions="CenterAndExpand"
                                                     VerticalOptions="CenterAndExpand"
                                                     HeightRequest="150"
@@ -170,7 +171,270 @@
                                     </CollectionView.ItemTemplate>
                                 </CollectionView>
                             </RefreshView>
+                            
                         </StackLayout>
+                        <Frame
+                            x:Name="FrameFilter"
+                            Grid.Row="0"
+                            Grid.RowSpan="4"
+                            Grid.ColumnSpan="2"
+                            Opacity="0.75"
+                            BackgroundColor="White"
+                            Margin="50,8,0,0"
+                           >
+                            <StackLayout Margin="3">
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    
+                                    <Label Grid.Row="1"
+                                           Text="Прием пищи"
+                                           TextColor="Black"
+                                           FontSize="17"
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="CenterAndExpand"
+                                           Grid.ColumnSpan="3"
+                                           >
+                                       
+                                    </Label>
+                                    <StackLayout Orientation="Horizontal"
+                                                 Grid.Row="2"
+                                                 WidthRequest="600" HeightRequest="100"
+                                                 Grid.ColumnSpan="3"
+                                                 >
+                                        <CollectionView SelectionMode="Multiple" 
+                                                        x:Name="TimeCollectionView"  WidthRequest="600" HeightRequest="100"
+                                                        >
+                                            <CollectionView.ItemsLayout>
+                                                <GridItemsLayout Orientation="Horizontal"
+                                                                  Span="1" 
+                                                                 
+                                                                 />
+                                            </CollectionView.ItemsLayout>
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup>
+                                                    <VisualState x:Name="Normal">
+
+                                                    </VisualState>
+                                                    <VisualState x:Name="Selected">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor"
+                                                     Value="orange" />
+
+                                                        </VisualState.Setters>
+
+                                                    </VisualState>
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+                                            <CollectionView.ItemTemplate  >
+
+                                                <DataTemplate  >
+
+                                                    <StackLayout Orientation="Vertical" BackgroundColor="White" Margin="0,0,50,0">
+                                                        <Image WidthRequest="50"
+                                                                   HeightRequest="50"
+                                                                Source="{Binding TimeImageUrl}">
+
+                                                        </Image>
+                                                        <Label
+                                                            HorizontalOptions="CenterAndExpand"
+                                                                FontSize="15"
+                                                                Text="{Binding TimeName}">
+
+                                                        </Label>
+                                                    </StackLayout>
+                                                </DataTemplate>
+                                               
+                                                </CollectionView.ItemTemplate >
+                                        </CollectionView>
+                                    </StackLayout>
+
+
+
+
+
+                                    <Label Grid.Row="3"
+                                           Text="Категории"
+                                           TextColor="Black"
+                                           FontSize="17"
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="CenterAndExpand"
+                                           Grid.ColumnSpan="3"
+                                           >
+
+                                    </Label>
+
+
+                                    <StackLayout 
+                                                 Grid.Row="4"
+                                                 WidthRequest="600" 
+                                                 Grid.ColumnSpan="3"
+                                        
+                                                 >
+                                        <CollectionView SelectionMode="Multiple" 
+                                                        x:Name="CategoryCollectionView"  WidthRequest="600" HeightRequest="200" 
+                                                        >
+                                            <CollectionView.ItemsLayout>
+                                                <GridItemsLayout Orientation="Horizontal"
+                                                                  Span="2" 
+                                                                 
+                                                                 />
+                                            </CollectionView.ItemsLayout>
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup>
+                                                    <VisualState x:Name="Normal">
+
+                                                    </VisualState>
+                                                    <VisualState x:Name="Selected">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor"
+                                                     Value="orange" />
+
+                                                        </VisualState.Setters>
+
+                                                    </VisualState>
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+                                            <CollectionView.ItemTemplate  >
+
+                                                <DataTemplate   >
+                                                    <Grid Padding="10" HeightRequest="150">
+                                                        <StackLayout Orientation="Vertical" BackgroundColor="White"  >
+                                                            <Image WidthRequest="50"
+                                                                   HeightRequest="50"
+                                                                Source="{Binding CategoryImageUrl}">
+
+                                                            </Image>
+                                                            <Label
+                                                            HorizontalOptions="CenterAndExpand"
+                                                                FontSize="15"
+                                                            HeightRequest="20"
+                                                                Text="{Binding CategoryName}">
+
+                                                            </Label>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </DataTemplate>
+
+                                            </CollectionView.ItemTemplate >
+                                        </CollectionView>
+                                    </StackLayout>
+
+
+
+                                    <Label Grid.Row="5"
+                                           Grid.ColumnSpan="3"
+                                           Text="Пищевые особенности"
+                                           TextColor="Black"
+                                           FontSize="17"
+                                           FontAttributes="Bold"
+                                           HorizontalTextAlignment="Center"
+                                           WidthRequest="300"
+                                           
+                                           
+                                           >
+
+                                    </Label>
+
+
+                                    <StackLayout 
+                                                 Grid.Row="6"
+                                                 WidthRequest="600" 
+                                                 Grid.ColumnSpan="3"
+                                        
+                                                 >
+                                        <CollectionView SelectionMode="Multiple" 
+                                                        x:Name="CharacterCollectionView"  WidthRequest="600" HeightRequest="200" 
+                                                        >
+                                            <CollectionView.ItemsLayout>
+                                                <GridItemsLayout Orientation="Horizontal"
+                                                                  Span="2" 
+                                                                 
+                                                                 />
+                                            </CollectionView.ItemsLayout>
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup>
+                                                    <VisualState x:Name="Normal">
+
+                                                    </VisualState>
+                                                    <VisualState x:Name="Selected">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor"
+                                                     Value="orange" />
+
+                                                        </VisualState.Setters>
+
+                                                    </VisualState>
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+                                            <CollectionView.ItemTemplate  >
+
+                                                <DataTemplate   >
+                                                    <Grid Padding="10" HeightRequest="150">
+                                                        <StackLayout Orientation="Vertical" BackgroundColor="White"  >
+                                                            <Image WidthRequest="50"
+                                                                   HeightRequest="50"
+                                                                Source="{Binding CharacterImageUrl}">
+
+                                                            </Image>
+                                                            <Label
+                                                            HorizontalOptions="CenterAndExpand"
+                                                                FontSize="15"
+                                                            
+                                                                Text="{Binding CharacterName}">
+
+                                                            </Label>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </DataTemplate>
+
+                                            </CollectionView.ItemTemplate >
+                                        </CollectionView>
+                                    </StackLayout>
+
+
+                                    <Label Grid.Row="7"
+                                           Grid.ColumnSpan="3"
+                                           Text="Время притоговления"
+                                           TextColor="Black"
+                                           FontSize="17"
+                                           FontAttributes="Bold"
+                                           HorizontalTextAlignment="Center"
+                                           WidthRequest="300"
+                                           
+                                           
+                                           >
+
+                                    </Label>
+                                    
+                                    
+                                    
+                                    <Button
+                                        Grid.Row="10"
+                                        Grid.ColumnSpan="3"
+                                        WidthRequest="60"
+                                        BackgroundColor="Aqua"
+                                        Clicked="FilterClicked"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        
+                                        CornerRadius="25"
+                                        >
+                                        
+                                    </Button>
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
                     </Grid>
         </StackLayout> 
             </ScrollView>
