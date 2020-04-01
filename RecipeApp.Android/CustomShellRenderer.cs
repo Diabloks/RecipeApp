@@ -50,11 +50,11 @@ namespace RecipeApp.Droid
 
             if (myItemOne.IsChecked)
             {
-                myItemOne.SetIcon(Resource.Drawable.iconsMainSelected); //Когда иконка в активном состоянии
+             //   myItemOne.SetIcon(Resource.Drawable.iconsMainSelected); //Когда иконка в активном состоянии
             }
             else
             {
-                myItemOne.SetIcon(Resource.Drawable.iconsMain); //Когда иконка в не активном состоянии
+             //   myItemOne.SetIcon(Resource.Drawable.iconsMain); //Когда иконка в не активном состоянии
             }
 
             //Таже логика если есть второй, третий элемент в tabbar
