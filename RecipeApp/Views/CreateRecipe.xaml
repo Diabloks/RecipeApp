@@ -1,9 +1,241 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage
-    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
     x:Class="RecipeApp.Views.CreateRecipe">
     <ContentPage.Content>
+        <Grid BackgroundColor="White" >
+            <ScrollView >
+                <ScrollView.VerticalOptions>
+                    <OnIdiom
+                        x:TypeArguments="LayoutOptions"
+                        Default="StartAndExpand"
+                        Phone="FillAndExpand" />
+                </ScrollView.VerticalOptions>
 
+                <StackLayout VerticalOptions="StartAndExpand" Margin="8"
+                   >
+                    <Grid RowSpacing="0" VerticalOptions="CenterAndExpand"  >
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                           
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Row="1" Margin="0,34,0,0"
+                            BackgroundColor="Black"
+                               HorizontalOptions="Center"
+                               HeightRequest="100"
+                               WidthRequest="100"
+                               Source="C:\Users\Kirill\source\repos\RecipeApp\RecipeApp\Resources\img\defaultRecipe.jpg"
+                               >
+
+                        </Image>
+                        <Button Grid.Row="2"
+                                Text="Добавить фото"
+                                HorizontalOptions="Center"
+                                BackgroundColor="White"
+                                
+                                FontSize="Body"
+                            >
+                        </Button>
+                        <Label Grid.Row="3"
+                               Text="Название"
+                                HorizontalOptions="Center"
+                               
+                                FontSize="17"
+                               >
+                            
+                        </Label>
+                       
+                            <Entry Margin="1"
+                                   Grid.Row="4"
+                                   Placeholder="Название"
+                                   HorizontalOptions="Center"
+                                   WidthRequest="320"
+                                   
+                               >
+
+                            </Entry>
+
+                        <BoxView
+                                Color="black"
+                                VerticalOptions="FillAndExpand"
+                                HeightRequest="1"
+                            Margin="10,10,0,0"
+                            Grid.Row="5">
+                            
+
+                        </BoxView>
+                        <StackLayout Orientation="Horizontal" 
+                                     HorizontalOptions="Center"
+                                   WidthRequest="320"
+                                                     Grid.Row="6">
+                            
+                                            <Label Text="Время изготовления"
+                                                   VerticalOptions="Center">
+                                                
+                                            </Label>
+                                            <TimePicker
+                                                Format="hh:mm">
+                                                
+                                            </TimePicker>
+                                            
+                                        </StackLayout >
+                        <BoxView
+                                Color="black"
+                                VerticalOptions="FillAndExpand"
+                                HeightRequest="1"
+                            Margin="10,0,0,10"
+                            Grid.Row="7">
+
+
+                        </BoxView>
+                        <StackLayout Orientation="Horizontal" 
+                                                     HorizontalOptions="Center"
+                                   WidthRequest="320" Grid.Row="8">
+                                            <Label Text="Количество порций"
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   >
+
+                                            </Label>
+                            
+                                <Label BindingContext="{x:Reference stepper}" 
+                                       Text="{Binding Value}"
+                                       VerticalOptions="Center"
+                                       FontSize="20"
+                                       
+                                       />
+                            <Stepper Minimum="0" Maximum="10" x:Name="stepper" Increment="1" HeightRequest="30" ScaleY="0.8" ScaleX="0.5"  />
+                            
+
+                        </StackLayout>
+                        <BoxView
+                                Color="black"
+                                VerticalOptions="FillAndExpand"
+                                HeightRequest="1"
+                            Margin="10,10,0,10"
+                            Grid.Row="9">
+
+
+                        </BoxView>
+                        <StackLayout Orientation="Vertical" 
+                                                     HorizontalOptions="Center"
+                                   WidthRequest="320" Grid.Row="10">
+                            <Label Text="Ингредиенты"
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   >
+
+                            </Label>
+                            <CollectionView SelectionMode="Single" 
+                                                        x:Name="CharacterCollectionView"  WidthRequest="600" HeightRequest="200" 
+                                                        >
+                                
+                                <CollectionView.ItemTemplate  >
+
+                                    <DataTemplate   >
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label
+                                                    FontSize="15"
+                                                    Text="{Binding IngridientName}">
+
+                                            </Label>
+                                            <Label
+                                                    FontSize="15"
+                                                    Text="{Binding IngridientNum}">
+
+                                            </Label>
+                                            <Label
+                                                    FontSize="15"
+                                                    Text="{Binding IngridientFormat}">
+
+                                            </Label>
+                                            <Button x:Name="DeleteButton"
+                                                    BackgroundColor="Aqua"
+                                                     Grid.Column="1"
+                                                     Grid.Row="2"
+                                                     WidthRequest="60"
+                                                     Text="button"
+                                                     
+                        
+                                             ></Button>
+                                        </StackLayout>
+                                    </DataTemplate>
+
+                                </CollectionView.ItemTemplate >
+                            </CollectionView>
+                            <StackLayout Orientation="Horizontal">
+                                <Picker x:Name="IngridientPicker"
+                                         Title="Ингридиент"
+                                             TitleColor="Green">
+                                    
+                                </Picker>
+                                <Label BindingContext="{x:Reference stepper}" 
+                                       Text="{Binding Value}"
+                                       VerticalOptions="Center"
+                                       Margin="20,0,0,0"
+                                       FontSize="20"
+                                       
+                                       />
+                                <Stepper Minimum="0" Maximum="10" x:Name="stepperIngridient" Increment="1" 
+                                         HeightRequest="30" ScaleY="0.8" ScaleX="0.5" 
+                                         Margin="-30,0,0,0"/>
+                                <Picker x:Name="FormatPicker"
+                                         Title="Штук"
+                                             TitleColor="Green"
+                                        Margin="-40,0,0,0">
+
+                                </Picker>
+                                <Button x:Name="DeleteButton"
+                                                    BackgroundColor="Aqua"
+                                                     Grid.Column="1"
+                                                     Grid.Row="2"
+                                                     WidthRequest="40"
+                                                        HeightRequest="20"
+                                                     Text="ok"
+                                                    FontSize="Small"
+                                        
+                                                     
+                        
+                                 ></Button>
+
+                            </StackLayout>
+                            
+                        </StackLayout>
+                        <BoxView
+                                Color="black"
+                                VerticalOptions="FillAndExpand"
+                                HeightRequest="1"
+                            Margin="10,10,0,10"
+                            Grid.Row="11">
+
+
+                        </BoxView>
+                        <Label Text="Этапы приготовления"
+                               HorizontalOptions="CenterAndExpand"
+                               Grid.Row="12">
+
+                        </Label>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

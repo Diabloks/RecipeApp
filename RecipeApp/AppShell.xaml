@@ -4,12 +4,14 @@
        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        mc:Ignorable="d"
+       xmlns:allviews="clr-namespace:RecipeApp.Views"
        xmlns:local="clr-namespace:RecipeApp;assembly=RecipeApp"
        xmlns:account="clr-namespace:RecipeApp.Views.Account"
        xmlns:main="clr-namespace:RecipeApp.Views.Main"
        
        Title="RecipeApp"
        x:Class="RecipeApp.AppShell">
+
 
     <!-- 
         Styles and Resources 
@@ -21,7 +23,7 @@
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="Shell.ForegroundColor" Value="Black" />
                 <Setter Property="Shell.TitleColor" Value="Black" />
-                <Setter Property="Shell.NavBarIsVisible" Value="True" />
+                <Setter Property="Shell.NavBarIsVisible" Value="False" />
                 <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="Shell.TabBarForegroundColor" Value="Black"/>
                 <Setter Property="Shell.TabBarTitleColor" Value="Black"/>
@@ -38,10 +40,10 @@
             <ShellContent ContentTemplate="{DataTemplate main:MainPage}" />
         </Tab>
         <Tab Title=""> <!--Search-->
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+            <ShellContent ContentTemplate="{DataTemplate allviews:SearchIngredients}" />
         </Tab>
         <Tab Title=""> <!--Add-->
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+            <ShellContent ContentTemplate="{DataTemplate allviews:CreateRecipe}" />
         </Tab>
         <Tab Title=""> <!--Favorite-->
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />

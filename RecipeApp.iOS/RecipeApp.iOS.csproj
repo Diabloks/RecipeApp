@@ -302,5 +302,11 @@
     <BundleResource Include="Resources\iconsRate%402x.png" />
     <BundleResource Include="Resources\iconsVegan%402x.png" />
     <BundleResource Include="Resources\iconsCheck%401x.png" />
+    <BundleResource Include="Resources\iconsFavorite%401x.png" />
+    <BundleResource Include="Resources\iconsFavorite%402x.png" />
+    <BundleResource Include="Resources\iconsFavorite%403x.png" />
+    <BundleResource Include="Resources\iconsFavoriteSelected%401x.png" />
+    <BundleResource Include="Resources\iconsFavoriteSelected%402x.png" />
+    <BundleResource Include="Resources\iconsFavoriteSelected%403x.png" />
   </ItemGroup>
 </Project>

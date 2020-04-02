@@ -65,8 +65,8 @@ namespace RecipeApp.iOS
                 itemAdd.SelectedImage = UIImage.FromBundle("iconsRecipeSelected.png");
 
                 UITabBarItem itemFavorite = myTabBar.Items[3];
-                itemFavorite.Image = UIImage.FromBundle("iconsLike.png");
-                itemFavorite.SelectedImage = UIImage.FromBundle("iconsLikeSelected.png");
+                itemFavorite.Image = UIImage.FromBundle("iconsFavorite.png");
+                itemFavorite.SelectedImage = UIImage.FromBundle("iconsFavoriteSelected.png");
 
                 UITabBarItem itemProfile = myTabBar.Items[4];
                 itemProfile.Image = UIImage.FromBundle("iconsUser.png");
