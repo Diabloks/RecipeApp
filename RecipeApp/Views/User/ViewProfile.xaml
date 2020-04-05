@@ -4,5 +4,52 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="RecipeApp.Views.User.ViewProfile">
     <ContentPage.Content>
+        <ScrollView>
+            <StackLayout x:Name ="dfgh" >
+
+                <!--<Image Source="{local:ImageResource RecipeApp.img.Шапка.png}" />-->
+
+                <Grid>
+                    <BoxView Color="Red" HeightRequest="132" WidthRequest="375"  />
+                    <StackLayout x:Name ="d" >
+                        <Grid>
+                            <StackLayout Orientation="Horizontal">
+                                <BoxView Color="White" Margin="0, 101, 0, 0" CornerRadius="20, 20, 0, 0" HorizontalOptions= "FillAndExpand" HeightRequest="699" WidthRequest="375"  />
+                            </StackLayout>
+                            <BoxView Color="Green" Margin =" 0, 75, 0, 0" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Start" HeightRequest="91" WidthRequest="87"  />
+                            <Label Text="Имя Фамилия" FontSize ="23" HorizontalOptions="CenterAndExpand" Margin="100,183,100,590" />
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="83,224,79,570" >
+                                <StackLayout >
+                                    <Label Text="10" FontSize ="18" HorizontalOptions="Center"></Label>
+                                    <Label Text="подписчиков" FontSize ="16"></Label>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label Text="10" FontSize ="18" HorizontalOptions="Center"></Label>
+                                    <Label Text="подписок" FontSize ="16" ></Label>
+                                </StackLayout>
+                            </StackLayout>
+                            <BoxView Color="#C8C8C8" Margin="15, 299, 15, 512"  HeightRequest="1" WidthRequest="345"
+                                     VerticalOptions="Start"   />
+                            <StackLayout Padding="0,327,0,407" >
+                                <Label Text="Заполненность профиля"  HorizontalOptions="Start" Margin ="15,0,15,0 " FontSize ="16"></Label>
+                                <Label Text="50% Заполнено" HorizontalOptions="End" Margin ="230,8,15,0 " FontSize ="16"></Label>
+                                <ProgressBar x:Name="button" ProgressColor="#666" Margin ="15,6,15,0" Progress="0.5" HeightRequest="31" WidthRequest="342"></ProgressBar>
+                                <Label Text="Мои рецепты"  HorizontalOptions="Start" Margin ="14,60,244,0 " FontSize ="16"></Label>
+                                <BoxView Color="#C8C8C8" Margin="15, 11, 15, 0"  HeightRequest="1" WidthRequest="345" />
+                                <Label Text="Редактировать профиль"  HorizontalOptions="Start" Margin ="14, 30,159,0 " FontSize ="16"></Label>
+                                <BoxView Color="#C8C8C8" Margin="15, 12, 15, 0"  HeightRequest="1" WidthRequest="345" />
+                                <Label Text="Настройки"  HorizontalOptions="Start" Margin ="14,29,254,0 " FontSize ="16"></Label>
+                                <BoxView Color="#C8C8C8" Margin="15, 12, 15, 0"  HeightRequest="1" WidthRequest="345" />
+                            </StackLayout>
+                            <Button  x:Name="button" Text="Выйти"  Margin ="45,610,47,100" VerticalOptions="CenterAndExpand" 
+                                    HorizontalOptions="Center" WidthRequest="283" HeightRequest="41"
+                                    BackgroundColor="#F4F4F8" CornerRadius="10"
+                                    BorderWidth="1" BorderColor="#26808080"></Button>
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
