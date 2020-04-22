@@ -8,10 +8,13 @@
             <StackLayout x:Name ="Change" >
 
                 <Grid>
-                    
-                    <!--<Image Source="{local:ImageResource RecipeApp.img.icons.iconsUser.png}" />-->
-                    <Label Text="Сохранить" FontSize ="18" HorizontalOptions="End" Margin="250,48,15,0" />
-                    <BoxView Color="Red" Margin =" 134, 90, 133, 0" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Start" HeightRequest="108" WidthRequest="108"  />
+
+
+                    <Image Source="iconsBack.png" VerticalOptions="Start" HorizontalOptions="Start" HeightRequest="25" Margin ="13, 44, 337, 0" WidthRequest="25"/>
+                        <Label Text="Сохранить" FontSize ="18" HorizontalOptions="End" Margin="250,48,15,0" />
+                    <Frame CornerRadius="100" HeightRequest="108" VerticalOptions="Start"  HasShadow="False" BackgroundColor="#F4F4F8"  Margin ="134, 90, 133, 0" WidthRequest="108" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True">
+                        <Image Source="iconsUser.png" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                    </Frame>
                     <StackLayout Padding="0,277,0,517" >
                         <Label Text="Имя пользователя" TextColor="#D0D0D0" HorizontalOptions="Start" Margin ="15,0,0,0 " FontSize ="16"></Label>
                         <BoxView Color="#C8C8C8" Margin="15, 5, 15, 0"  HeightRequest="1" WidthRequest="345" />
@@ -26,12 +29,7 @@
                         <Label Text="Удалить аккаунт"  FontAttributes="Bold" TextColor="#D0D0D0" HorizontalOptions="Start" Margin ="15,38,0,0 " FontSize ="16"></Label>
                         <BoxView Color="#C8C8C8" Margin="15, 0, 0, 0"  HorizontalOptions="Start" HeightRequest="1" WidthRequest="135" />
                     </StackLayout>
-                           
-                            <Button  x:Name="button" Text="Выйти"  Margin ="45,610,47,100" VerticalOptions="CenterAndExpand" 
-                                    HorizontalOptions="Center" WidthRequest="283" HeightRequest="41"
-                                    BackgroundColor="#F4F4F8" CornerRadius="10"
-                                    BorderWidth="1" BorderColor="#26808080"></Button>
-                        
+
                 </Grid>
 
             </StackLayout>
