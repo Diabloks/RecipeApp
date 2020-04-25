@@ -8,8 +8,7 @@
             <StackLayout x:Name ="dfgh" >
 
                 <Grid>
-                    <!--<Image Source="headerProfile.png"  HeightRequest="132" WidthRequest="375"  />-->
-                    <BoxView Color="Red" HeightRequest="132" WidthRequest="375"  />
+                    <Image Source="headerProfile.png" Aspect="AspectFill" VerticalOptions="Start"/>
                     <StackLayout x:Name ="d" >
                         <Grid>
                             <StackLayout Orientation="Horizontal">
@@ -21,7 +20,7 @@
                             </Frame>
                             <Label Text="Имя Фамилия" TextColor="#000" FontAttributes="Bold" FontSize ="23" HorizontalOptions="CenterAndExpand" Margin="100,184,100,590" />
 
-                            <Grid Padding="83,224,79,570" HorizontalOptions="Center" RowSpacing="0">
+                            <Grid Padding="83,224,79,570" HorizontalOptions="Center">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="25" />
                                     <RowDefinition Height="25" />
