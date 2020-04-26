@@ -26,7 +26,7 @@ namespace RecipeApp.Views.Main {
 
        }
 
-        /*protected override void OnAppearing() {
+        protected override void OnAppearing() {
               base.OnAppearing();
               AllRecipies = new List<Recipie>(Recipies.Get());
               RecipiesCollectionView.ItemsSource = AllRecipies;
@@ -36,7 +36,7 @@ namespace RecipeApp.Views.Main {
               CategoryCollectionView.ItemsSource = AllCategories;
               AllCharacters = new List<Character>(Characters.Get());
               CharacterCollectionView.ItemsSource = AllCharacters;
-        }*/
+        }
 
         void FilterClicked(object sender, EventArgs args) {
               if (FrameVisibility == false) {

@@ -145,7 +145,7 @@
 
                             </Label>
                             <CollectionView SelectionMode="Single" 
-                                                        x:Name="CharacterCollectionView"  WidthRequest="600" HeightRequest="200" 
+                                                        x:Name="ingridientCollectionView"  WidthRequest="600" HeightRequest="200" 
                                                         >
                                 
                                 <CollectionView.ItemTemplate  >
@@ -159,7 +159,7 @@
                                             </Label>
                                             <Label
                                                     FontSize="15"
-                                                    Text="{Binding IngridientNum}">
+                                                    Text="{Binding IngridientValue}">
 
                                             </Label>
                                             <Label
@@ -187,10 +187,10 @@
                                              TitleColor="Green">
                                     
                                 </Picker>
-                                <Label BindingContext="{x:Reference stepper}" 
+                                <Label BindingContext="{x:Reference stepperIngridient}" 
                                        Text="{Binding Value}"
                                        VerticalOptions="Center"
-                                       Margin="20,0,0,0"
+                                       Margin="10,0,0,0"
                                        FontSize="20"
                                        
                                        />
@@ -203,7 +203,7 @@
                                         Margin="-40,0,0,0">
 
                                 </Picker>
-                                <Button x:Name="DeleteButton"
+                                <Button x:Name="AddButton"
                                                     BackgroundColor="Aqua"
                                                      Grid.Column="1"
                                                      Grid.Row="2"
@@ -211,7 +211,7 @@
                                                         HeightRequest="20"
                                                      Text="ok"
                                                     FontSize="Small"
-                                        
+                                        Clicked="AddButton_Clicked"
                                                      
                         
                                  ></Button>
