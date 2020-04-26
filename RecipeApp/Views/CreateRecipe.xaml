@@ -35,6 +35,9 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                            
@@ -233,6 +236,27 @@
                                Grid.Row="12">
 
                         </Label>
+                        <StackLayout
+                            
+                            Grid.Row="13">
+                            <Editor HeightRequest="100"
+                                    BackgroundColor="ForestGreen">
+                                
+                            </Editor>
+                            <Button>
+                                
+                            </Button>
+                        </StackLayout>
+                        <Button
+                            Grid.Row="14" Text="следующий шаг"
+                            >
+                            
+                        </Button>
+                        <Button
+                            Grid.Row="15"
+                            Text="опубликовать рецепт">
+                            
+                        </Button>
                     </Grid>
                 </StackLayout>
             </ScrollView>

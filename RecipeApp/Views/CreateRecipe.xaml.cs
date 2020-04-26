@@ -20,7 +20,7 @@ namespace RecipeApp.Views
       }); 
     }
 
-    public bool IsIngredientCollectionActive = true;
+    public bool IsIngredientCollectionActive = false;
         public CreateRecipe()
         {
             InitializeComponent();
@@ -40,22 +40,22 @@ namespace RecipeApp.Views
         private void AddButton_Clicked(object sender, EventArgs e) {
         ingridientCollectionView.IsVisible = true;
       //  MainIngridients.Clear();
-      /* MainIngridients.Add(new Ingridient {
+     /*  MainIngridients.Add(new Ingridient {
          IngridientName = "jjj",
          IngridientValue = "jjj",
          IngridientFormat = ";;;;;"
-       });*/
-      /*  Ingridient NewIngridient = new Ingridient();
+       });
+       Ingridient NewIngridient = new Ingridient();
          NewIngridient.IngridientName ="eeeee";
-        //  NewIngridient.IngridientValue = stepperIngridient.Value.ToString();
-        // NewIngridient.IngridientFormat = FormatPicker.SelectedItem.ToString();
-        //  MainIngridients.Add(NewIngridient);*/
-      try {
-       Action();
-      }
+         NewIngridient.IngridientValue = stepperIngridient.Value.ToString();
+         NewIngridient.IngridientFormat = FormatPicker.SelectedItem.ToString();
+          MainIngridients.Add(NewIngridient);
+      try {*/
+      // Action();
+     /* }
       catch {
         DisplayAlert("Уведомление", "Пришло новое сообщение", "ОK");
-      }
+      }*/
      
         }
     }
