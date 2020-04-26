@@ -1,5 +1,43 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="RecipeApp.Views.User.VIewFavourite">
     <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout Margin="0,62,0,0">
+                    <Label Text="Избранное" FontSize ="25" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#D0D0D0" />
+                    <Label Text="3 рецепта" FontSize ="15" FontAttributes="Bold" HorizontalOptions="Center"  Margin="0,7,0,0" TextColor="#D0D0D0" />
+                    <StackLayout Orientation="Horizontal" Margin="0,50,0,0">
+                        <Frame CornerRadius="10" Margin="11,45,-190,0" VerticalOptions="Start" HasShadow="True"  HorizontalOptions="Start" IsClippedToBounds="True">
+                            <BoxView Color="Red" Margin="-20" CornerRadius="10" HeightRequest="347" WidthRequest="232"  />
+                        </Frame>
+                        <!-- <Frame CornerRadius="10" VerticalOptions="Start" HasShadow="True"  HorizontalOptions="Center" IsClippedToBounds="True">
+                            <BoxView Color="Green" Margin="-20" CornerRadius="10" HeightRequest="405" WidthRequest="270"  />
+                        </Frame>-->
+                        <Image Source="recipeExample.png"  HorizontalOptions="Center"></Image>
+                        <Frame CornerRadius="10" Margin="15,0,0,0" VerticalOptions="Center"  HasShadow="True" HorizontalOptions="End" IsClippedToBounds="True">
+                            <BoxView Color="Blue" Margin="-20" CornerRadius="10" HeightRequest="373" WidthRequest="249" />
+                        </Frame>
+                    </StackLayout>
+                    <Grid Margin="63,10,15,0"  RowSpacing="-2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="22" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70" />
+                            <ColumnDefinition Width="28" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="n минут" FontSize ="14" TextColor="#000" Grid.Column="0" Grid.Row="0"/>
+                        <Image Source="iconsRate.png" Margin="16,0,0,0"  HeightRequest="14" WidthRequest="14"  Grid.Column="1" Grid.Row="0"></Image>
+                        <Label Text="30" FontSize ="14" TextColor="#000" Grid.Column="2" Grid.Row="0"/>
+                        <Label Text="Имя автора" FontSize ="14" TextColor="#000" Grid.Column="3" Grid.Row="0" HorizontalOptions="Center"/>
+                        <Label Text="Название рецепта" FontSize ="16" FontAttributes="Bold" HorizontalOptions="Start" Grid.ColumnSpan="4" Grid.Row="1" TextColor="#000" />
+                        
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -309,4 +309,25 @@
     <BundleResource Include="Resources\iconsFavoriteSelected%402x.png" />
     <BundleResource Include="Resources\iconsFavoriteSelected%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconsFacebook%401x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconsFacebook%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconsInstagram%401x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconsInstagram%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\headerProfile%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\headerProfile%401x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\recipeExample.png" />
+  </ItemGroup>
 </Project>
