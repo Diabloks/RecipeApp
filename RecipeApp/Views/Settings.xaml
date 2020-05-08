@@ -10,7 +10,6 @@
              <StackLayout>
                 <Grid>
 
-
                     <Image Source="iconsBack.png" VerticalOptions="Start" HorizontalOptions="Start" HeightRequest="25" Margin ="13, 44, 337, 0" WidthRequest="25"/>
                     
                     <StackLayout Margin="0,90,0,0">

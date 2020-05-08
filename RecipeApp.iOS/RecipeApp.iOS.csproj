@@ -330,4 +330,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\recipeExample.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\header%401x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\header%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconsMinus%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconsMinus%401x.png" />
+  </ItemGroup>
 </Project>
