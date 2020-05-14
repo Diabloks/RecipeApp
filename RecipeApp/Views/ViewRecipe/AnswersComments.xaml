@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RecipeApp.Views.ViewRecipe.AnswersComments">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout x:Name ="comments_answer" >
+
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="iconsBack.png" HeightRequest="25"  HorizontalOptions= "Start" WidthRequest="25" Margin="15, 45, 0, 0" />
+                    <Label Text="Название блюда" TextColor="#000" FontAttributes="Bold" FontSize ="25" Margin="22, 45, 0, 0" />
+                </StackLayout>
+
+                <StackLayout Margin="0, 31, 0, 0">
+
+                    <ScrollView  Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+
+                        <StackLayout  Orientation="Horizontal">
+
+                            <Label Text="Ингредиенты" TextColor="#000"  Margin="-140,5,0,0" FontSize ="20"></Label>
+                            <Label Text="Этапы приготовления" TextColor="#000"  Margin="7,5,0,0" FontSize ="20"></Label>
+                            <Label Text="Отзывы (2)" TextColor="#000" Margin="10,0,0,0" FontAttributes="Bold" FontSize ="25"></Label>
+                        </StackLayout>
+
+                    </ScrollView>
+                </StackLayout>
+                <Grid>
+                    <Grid Padding="0,28,0,0" HorizontalOptions="CenterAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="320" />
+                        </Grid.ColumnDefinitions>
+
+                        <Frame HeightRequest="56" WidthRequest="315" CornerRadius="10"  Grid.Column="0" Grid.Row="0">
+                            <BoxView Color="#7AF4F4F8" Margin="-20"  CornerRadius="10" />
+                        </Frame>
+
+                    </Grid>
+                    <Label Text="Написать отзыв" TextColor="#000" Margin ="0,18,0,0" VerticalOptions="Center" HorizontalOptions="Center"  ></Label>
+                </Grid>
+
+                <StackLayout Orientation="Horizontal"  Margin="30,50,30,0">
+                    <Frame CornerRadius="100" VerticalOptions="Start"  HasShadow="False" BackgroundColor="#F4F4F8"  Margin ="0, 0, 12, 0" Padding="0" IsClippedToBounds="True">
+                        <Image Source="iconsUserSelected.png" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                    </Frame>
+                    <!--<Image Source="iconsUserSelected.png" VerticalOptions="Start" HeightRequest="45" WidthRequest="45" Margin="0,0,12,0"></Image>-->
+                    <Grid  RowSpacing="10" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Имя пользователя" TextColor="#000" FontSize ="11" Grid.ColumnSpan="4" Grid.Row="0"/>
+                        <Label Text="Текст отзыва" TextColor="#000" Margin="0,-17,0,0" FontSize ="11" Grid.ColumnSpan="4" Grid.Row="1"/>
+
+                        <StackLayout Orientation="Horizontal"  Grid.ColumnSpan="4" Grid.Row="2">
+
+                            <Frame HeightRequest="50" WidthRequest="50" CornerRadius="10"  >
+                                <BoxView Color="Red" Margin="-20"  CornerRadius="10" />
+                            </Frame>
+                            <Frame HeightRequest="50" WidthRequest="50" CornerRadius="10" Margin="15,0,0,0" >
+                                <BoxView Color="Red" Margin="-20"  CornerRadius="10" />
+                            </Frame>
+
+                            <StackLayout Margin="15,0,0,0">
+                                <Frame HeightRequest="50" WidthRequest="50" CornerRadius="10"  >
+                                    <BoxView Color="Red" Margin="-20"  CornerRadius="10" />
+                                </Frame>
+                                <Frame HeightRequest="50" WidthRequest="50" CornerRadius="10" Margin="0,-45,0,0" >
+                                    <BoxView Color="Blue" Margin="-20"  CornerRadius="10" Opacity="0.5"/>
+                                </Frame>
+                                <Label Text="+2" Margin="-5" FontSize ="16" TextColor="#000" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"></Label>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <Image Source="iconsLike.png" HeightRequest="15" WidthRequest="15"  Margin="0,5,0,0" Grid.Column="0" Grid.Row="3"></Image>
+                        <Label Text="20" TextColor="#000" FontSize ="11" Grid.Column="1" Grid.Row="3"  Margin="0,5,0,0"/>
+                        <Image Source="iconsComments.png" HeightRequest="15" WidthRequest="15" Margin="10,5,0,0" Grid.Column="2" Grid.Row="3"></Image>
+                        <Label Text="30" TextColor="#000" FontSize ="11"  Margin="0,5,0,0" Grid.Column="3" Grid.Row="3" Opacity="0.23"/>
+                    </Grid>
+                </StackLayout>
+
+                <Grid Padding="85,15,30,0" HorizontalOptions="CenterAndExpand" RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <Frame HeightRequest="135" WidthRequest="256" CornerRadius="10" Margin="-5,-5,-10,-5" BackgroundColor="#FFF"  
+                                   BorderColor="#F4F4F8"  Grid.RowSpan="3" Grid.ColumnSpan="1" HasShadow="False"></Frame>
+
+                    <Grid  Grid.Column="0" Grid.Row="0" RowSpacing="-10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Frame CornerRadius="100" Grid.Column="0" Grid.Row="0" BackgroundColor="#F4F4F8"  IsClippedToBounds="True" HasShadow="False"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                            <Image Source="iconsUserSelected.png"  Margin="-16,-19,-13,-13"  VerticalOptions="Start" HorizontalOptions="Start"/>
+                        </Frame>
+                        <Label Text="Имя Фамилия" TextColor="#000" FontSize ="11" Grid.Column="1" Grid.Row="0"/>
+                        <Label Text="Текст отзыва" TextColor="#000" FontSize ="11" Grid.Column="1" Grid.Row="1"/>
+                        <Image Source="iconsLike.png" HeightRequest="13" WidthRequest="13" Grid.Column="2" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="End" ></Image>
+                        <Label Text="20" TextColor="#000" FontSize ="11" Grid.Column="3" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="End"/>
+                    </Grid>
+
+                    <Grid  Grid.Column="0" Grid.Row="1" RowSpacing="-10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Frame CornerRadius="100" Grid.Column="0" Grid.Row="0" BackgroundColor="#F4F4F8"  IsClippedToBounds="True" HasShadow="False"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                            <Image Source="iconsUserSelected.png"  Margin="-16,-19,-13,-13"  VerticalOptions="Start" HorizontalOptions="Start"/>
+                        </Frame>
+                        <Label Text="Имя Фамилия" TextColor="#000" FontSize ="11" Grid.Column="1" Grid.Row="0"/>
+                        <Label Text="Текст отзыва" TextColor="#000" FontSize ="11" Grid.Column="1" Grid.Row="1"/>
+                        <Image Source="iconsLike.png" HeightRequest="13" WidthRequest="13" Grid.Column="2" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="End" ></Image>
+                        <Label Text="20" TextColor="#000" FontSize ="11" Grid.Column="3" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="End"/>
+                    </Grid>
+
+
+                    <Grid Margin="0,7,0,0" Grid.Column="0" Grid.Row="2" RowSpacing="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <BoxView Color="#C8C8C8" Margin="0, 0, -9, 0" Grid.Row="0" Grid.ColumnSpan="2" HeightRequest="1" WidthRequest="253" />
+                        <Label Text="Комментарий" TextColor="#D0D0D0" FontSize ="14" Grid.Column="0" Grid.Row="1" Margin="35,0,0,0" />
+                        <Image Source="iconsSend.png" HeightRequest="26" WidthRequest="26" Grid.Column="1" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="End" ></Image>
+                    </Grid>
+                </Grid>
+                
+                
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

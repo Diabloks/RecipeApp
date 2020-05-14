@@ -342,4 +342,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\iconsMinus%401x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconsComments%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconsComments%401x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconsSend%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconsSend%401x.png" />
+  </ItemGroup>
 </Project>
