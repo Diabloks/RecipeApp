@@ -16,7 +16,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\User\" />
-    <Folder Include="Views\Account\" />
     <Folder Include="Views\Errors\" />
   </ItemGroup>
   <ItemGroup>
@@ -28,6 +27,15 @@
     <None Remove="Resources\img\icons\iconsMainActive.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="Views\Account\Login.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Account\nonRegis.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Account\Registration.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\AddReciept\AddReciept.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
