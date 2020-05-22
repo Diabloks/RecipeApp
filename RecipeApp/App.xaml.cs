@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using RecipeApp.Models;
 
 namespace RecipeApp
 {
@@ -14,6 +15,8 @@ namespace RecipeApp
 
         protected override void OnStart()
         {
+            DataBase db = new DataBase();
+            db.SyncProducts();
         }
 
         protected override void OnSleep()

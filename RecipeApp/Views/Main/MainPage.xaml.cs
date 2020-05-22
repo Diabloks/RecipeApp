@@ -7,47 +7,49 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using RecipeApp.Models;
-using RecipeApp.Views.Main;
+using RecipeApp.Views.ViewRecipe;
 
-namespace RecipeApp.Views.Main {
-  [XamlCompilation(XamlCompilationOptions.Compile)]
-  
-  public partial class MainPage : ContentPage
-  {
-       public List<Recipie> AllRecipies { get; set; }
-       public List<Category> AllCategories { get; set; }
-       public List<Character> AllCharacters { get; set; }
-       public List<TimeModel> AllTimes { get; set; }
-       public bool FrameVisibility = false;
+namespace RecipeApp.Views.Main
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 
-       public MainPage() {
+    public partial class MainPage : ContentPage
+    {
+        DataBase db = new DataBase();
+        public List<Recipe> AllRecipes { get; set; }
+
+        public MainPage()
+        {
             InitializeComponent();
-            FrameFilter.IsVisible = FrameVisibility;
-
-       }
-
-        protected override void OnAppearing() {
-              base.OnAppearing();
-              AllRecipies = new List<Recipie>(Recipies.Get());
-              RecipiesCollectionView.ItemsSource = AllRecipies;
-              AllTimes = new List<TimeModel>(TimeModels.Get());
-              TimeCollectionView.ItemsSource = AllTimes;
-              AllCategories = new List<Category>(Categories.Get());
-              CategoryCollectionView.ItemsSource = AllCategories;
-              AllCharacters = new List<Character>(Characters.Get());
-              CharacterCollectionView.ItemsSource = AllCharacters;
         }
 
-        void FilterClicked(object sender, EventArgs args) {
-              if (FrameVisibility == false) {
-                FrameVisibility = true;
-                FilterButton.IsVisible = false;
-              }
-              else {
-                FrameVisibility = false;
-                FilterButton.IsVisible = true;
-              }
-              FrameFilter.IsVisible = FrameVisibility;
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            AllRecipes = db.GetRecipes() as List<Recipe>;
+            RecipesCollectionView.ItemsSource = AllRecipes;
+        }
+
+        private void RefreshList(object sender, EventArgs args)
+        {
+            AllRecipes = db.GetRecipes() as List<Recipe>;
+            RecipesCollectionView.ItemsSource = AllRecipes;
+        }
+
+        void FilterClicked(object sender, EventArgs args)
+        {
+            FrameFilter.IsVisible = true;
+        }
+
+        void FilterSelected_Clicked(object sender, EventArgs args)
+        {
+            FrameFilter.IsVisible = false;
+        }
+
+        private async void SelectionChanged(object sender, EventArgs args)
+        {
+            Recipe selected = RecipesCollectionView.SelectedItem as Recipe;
+            await Navigation.PushModalAsync(new ViewRecipe.ViewRecipe(selected.id));
         }
     }
 }

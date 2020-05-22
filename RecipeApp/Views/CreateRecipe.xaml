@@ -15,134 +15,295 @@
                         Default="StartAndExpand"
                         Phone="FillAndExpand" />
                 </ScrollView.VerticalOptions>
-                
+
                 <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="Center" Padding="0,34,0,0">
-                    
-                    <Image  Source="iconsAddPhoto.png" HeightRequest="82" WidthRequest="82"  
-                                HorizontalOptions= "Center">
-                    </Image>
-                    <Label Text="Добавить фото" FontSize="20" TextColor="#000" Margin="0,-7,0,0"  HorizontalOptions= "Center"></Label>
-                    <!--<Button Grid.Row="2"
-                                Text="Добавить фото"
-                                HorizontalOptions="Center"
-                                BackgroundColor="White"
-                                FontSize="Body">
-                    </Button>-->
+                    <Frame x:Name="MainPhotoFrame" Margin="10" IsVisible="False" CornerRadius="10" Padding="0" HasShadow="false">
+                        <ImageButton x:Name="MainPhoto" Clicked="PhotoChange_Clicked" Aspect="AspectFill"/>
+                    </Frame>
+
+                    <ImageButton x:Name="buttonAddPhoto"
+                                 Source="iconsAddPhoto" 
+                                 BackgroundColor="Transparent"
+                                 HeightRequest="82" 
+                                 WidthRequest="82" 
+                                 HorizontalOptions="Center"
+                                 Clicked="AddMainPhoto_Clicked"
+                                 />
+                    <Label x:Name="labelFoto"
+                           Text="Добавить фото" 
+                           FontSize="20" 
+                           TextColor="#000" 
+                           Margin="0,-7,0,0"  
+                           HorizontalOptions= "Center"
+                           BackgroundColor="Transparent"
+                           />
                     <Label Text="Название" Margin="0,10,0,0" HorizontalOptions="Center" TextColor="#000" FontSize="18"></Label>
 
-                    <Grid  Margin="18,6,15,0" HorizontalOptions="Center"  >
-                        
+                    <Grid  Margin="18,0,15,20" HorizontalOptions="Center"  >
+
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="69" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <Frame HeightRequest="-5" WidthRequest="380" CornerRadius="10"  BackgroundColor="#F4F4F8"  
-                               Grid.RowSpan="1" Grid.ColumnSpan="3" HorizontalOptions="Center" HasShadow="False"/>
-                        
-                        <Label Text="Название" TextColor="#000" Opacity="0.21" FontSize ="18" Grid.ColumnSpan="3"  Grid.Row="0" 
-                               VerticalOptions="Center"  HorizontalOptions="Center"/>
-                        
+                        <Frame CornerRadius="10" BackgroundColor="#F4F4F8"
+                               Padding="0"
+                               HeightRequest="35"
+                               HorizontalOptions="FillAndExpand" VerticalOptions="Center"
+                               HasShadow="False"
+                               Grid.Row="0" Grid.ColumnSpan="3">
+                            <Entry x:Name="EntryRecipeName"
+                                   Placeholder="Название"
+                                   Margin="0,0,0,-5"
+                                   BackgroundColor="Transparent" 
+                                   TextColor="Black"
+                                   FontSize ="18"
+                                   Keyboard="Text"
+                                   VerticalOptions="Center" HorizontalOptions="FillAndExpand"
+                                   HorizontalTextAlignment="Center"/>
+                        </Frame>
+
                         <BoxView Color="#C8C8C8" Margin="0,20,0,0" HeightRequest="1" Grid.ColumnSpan="3" Grid.Row="1" />
+                    </Grid>
+                    <Grid  Margin="18,0,15,0" HorizontalOptions="Center"  >
 
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
                         <Label Text="Время приготовления" TextColor="#000" FontSize ="20" 
-                               Grid.Column="0" Grid.Row="2" Margin="0,24,0,0" HorizontalOptions="Start"/>
-                       
-                        <Frame HeightRequest="17" WidthRequest="39" CornerRadius="10" BackgroundColor="#F4F4F8" BorderColor="#26808080" 
-                               Grid.Row="2" Grid.Column="1" HasShadow="False" VerticalOptions="End" >
-                            <Label Text="00" TextColor="#000" FontSize ="16" Grid.Row="2" Grid.Column="1" 
-                                   HorizontalTextAlignment="Center" Margin="0,-5,0,0"/>
+                               Grid.Column="0" Grid.Row="0"  
+                               HorizontalOptions="Start" VerticalOptions="Center"/>
+
+                        <Frame HeightRequest="35" WidthRequest="45" 
+                               CornerRadius="10" Padding="0"
+                               BackgroundColor="#F4F4F8" BorderColor="#26808080" 
+                               Grid.Row="0" Grid.Column="1" 
+                               HasShadow="False" 
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="Fill">
+                            <Entry x:Name="EntryTime"
+                               Placeholder="00"
+                               Margin="0,0,0,-5"
+                               BackgroundColor="Transparent" 
+                               TextColor="Black"
+                               FontSize ="18"
+                               Keyboard="Numeric"
+                               VerticalOptions="Center"
+                               HorizontalTextAlignment="Center"
+                               HorizontalOptions="FillAndExpand"/>
                         </Frame>
-                        
-                        <Frame HeightRequest="17" WidthRequest="39" CornerRadius="10" BackgroundColor="#F4F4F8" BorderColor="#26808080" 
-                               Grid.Row="2" Grid.Column="2" HasShadow="False" VerticalOptions="End" >
-                            <Label Text="минут" TextColor="#000"  FontSize ="16"  Margin="0,-5,0,0" HorizontalTextAlignment="Center" />
+                        <Frame HeightRequest="35" WidthRequest="75" 
+                               CornerRadius="10" Padding="0"
+                               BackgroundColor="#F4F4F8" BorderColor="#26808080" 
+                               Grid.Row="0" Grid.Column="2" HasShadow="False"
+                               VerticalOptions="Fill">
+                            <Picker x:Name="PickerTimeType"
+                               Margin="0,0,0,-5"
+                               BackgroundColor="Transparent" 
+                               TextColor="Black"
+                               FontSize ="18"
+                               VerticalOptions="Center"
+                               HorizontalOptions="CenterAndExpand">
+                            </Picker>
                         </Frame>
 
-                        <BoxView Color="#C8C8C8" Margin="0,13,0,0" HeightRequest="1" Grid.ColumnSpan="3" Grid.Row="3" />
+                        <BoxView Color="#C8C8C8" Margin="0,20,0,0" HeightRequest="1" Grid.ColumnSpan="3" Grid.Row="1" />
                     </Grid>
 
                     <Grid Margin="18,0,15,0" HorizontalOptions="Center"  >
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="69" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="60" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
                         <Label Text="Количество порций" TextColor="#000" FontSize ="20" 
-                               Grid.Column="0" Grid.Row="0" Margin="0,24,0,0" HorizontalOptions="Start"/>
-                        <Image  Source="iconsMinus.png" HeightRequest="20" WidthRequest="20"  
-                                HorizontalOptions= "Center" Grid.Column="1" Grid.Row="0"/>
-                        <Frame HeightRequest="17" WidthRequest="39" CornerRadius="10" BackgroundColor="#F4F4F8" BorderColor="#26808080" 
-                               Grid.Row="0" Grid.Column="2" HasShadow="False" VerticalOptions="End" >
-                            <Label Text="1" TextColor="#000" FontSize ="16" Grid.Row="2" Grid.Column="2" 
-                                   HorizontalTextAlignment="Center" Margin="0,-5,0,0"/>
+                               Grid.Column="0" Grid.Row="0" Margin="0,10,0,0" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                        <ImageButton Source="iconsMinus.png" BackgroundColor="Transparent" Clicked="StepperMinus_Clicked"
+                                     HeightRequest="35" WidthRequest="20"  Margin="0,10,0,0"
+                                     HorizontalOptions= "Center" VerticalOptions="Center"
+                                     Grid.Column="1" Grid.Row="0"/>
+                        <Frame HeightRequest="35" WidthRequest="45" 
+                               CornerRadius="10" Padding="0"
+                               BackgroundColor="#F4F4F8" BorderColor="#26808080" 
+                               Grid.Row="0" Grid.Column="2" 
+                               HasShadow="False" 
+                               VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
+                               Margin="0,10,0,0">
+                            <Label x:Name="labelServings" Text="1" TextColor="#000" FontSize ="18"
+                                   HorizontalTextAlignment="Center" Margin="0,5,0,0"/>
                         </Frame>
-                        <Image  Source="iconsPlus.png" HeightRequest="20" WidthRequest="20"  
-                                HorizontalOptions= "Center" Grid.Column="3" Grid.Row="0"/>
-                        <BoxView Color="#C8C8C8" Margin="0,13,0,0" HeightRequest="1" Grid.ColumnSpan="4" Grid.Row="1" />
+                        <ImageButton Source="iconsPlus.png" BackgroundColor="Transparent" Clicked="StepperPlus_Clicked"
+                                     HeightRequest="35" WidthRequest="20" Margin="0,10,0,0"
+                                     HorizontalOptions= "Center" 
+                                     Grid.Column="3" Grid.Row="0"/>
+                        <BoxView Color="#C8C8C8" Margin="0,20,0,0" HeightRequest="1" Grid.ColumnSpan="4" Grid.Row="1" />
                     </Grid>
 
-                    <Grid Margin="18,0,15,0" RowSpacing="-3" HorizontalOptions="Center"  >
+                    <Grid Margin="18,0,15,0" HorizontalOptions="Center"  >
 
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="35" />
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="69" />
-                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="35" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="60" />
                             <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
                         <Label Text="Ингредиенты" TextColor="#000" FontSize ="20" 
-                               Grid.Column="0" Grid.Row="0" Margin="0,24,0,0" HorizontalOptions="Start"/>
-                        <Frame HeightRequest="17" WidthRequest="200" CornerRadius="10"  BackgroundColor="#F4F4F8"  
-                               Grid.Row="1" Grid.Column="0" VerticalOptions="End" HasShadow="False">
-                            <Label Text="Ингредиент" TextColor="#000" Opacity="0.21" FontSize ="18" Grid.Row="1" Grid.Column="0"
-                               Margin="0,-8,0,0"  HorizontalOptions="Center"/>
+                               Grid.Column="0" Grid.Row="0" Margin="0,10,0,0" HorizontalOptions="Start"/>
+                        <CollectionView
+                            Margin="0,0,0,10"
+                            x:Name="CollectionViewIngredients"
+                            IsVisible="False" SelectionMode="None"
+                            Grid.ColumnSpan="3" 
+                            Grid.Row="1">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="35" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="150" />
+                                            <ColumnDefinition Width="80" />
+                                            <ColumnDefinition Width="80" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="{Binding product.name}" TextColor="#000" FontSize ="18" HorizontalTextAlignment="Center"/>
+                                        <Label Grid.Column="1" Text="-" TextColor="#000" FontSize ="18" HorizontalTextAlignment="Center"/>
+                                        <Label Grid.Column="2" Text="{Binding count}" TextColor="#000" FontSize ="18" HorizontalTextAlignment="Center"/>
+                                        <Label Grid.Column="3" Text="{Binding countType}" TextColor="#000" FontSize ="18" HorizontalTextAlignment="Center"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <Frame HeightRequest="35" WidthRequest="200" CornerRadius="10"  BackgroundColor="#F4F4F8" Padding="0"
+                               Grid.Row="2" Grid.Column="0" 
+                               VerticalOptions="Center" HorizontalOptions="FillAndExpand"
+                               HasShadow="False">
+                            <Picker x:Name="IngredientsPicker" ItemsSource="{Binding product}" ItemDisplayBinding="{Binding name}"
+                                    Margin="0,-5,0,-5" TextColor="Black" FontSize ="18" Grid.Row="1" Grid.Column="0"
+                                    HorizontalOptions="CenterAndExpand" VerticalOptions="Center" SelectedIndexChanged="PickerIngredients_Changed"/>
                         </Frame>
-                        <Frame HeightRequest="17" WidthRequest="39" CornerRadius="10" BackgroundColor="#F4F4F8" BorderColor="#26808080" 
-                               Grid.Row="1" Grid.Column="1" HasShadow="False" VerticalOptions="End" >
-                            <Label Text="00" TextColor="#000" FontSize ="16" Grid.Row="1" Grid.Column="1" 
-                                   HorizontalTextAlignment="Center" Margin="0,-5,0,0"/>
+                        <Frame HeightRequest="35" WidthRequest="40" 
+                               CornerRadius="10" BackgroundColor="#F4F4F8" BorderColor="#26808080" 
+                               Grid.Row="2" Grid.Column="1" 
+                               HasShadow="False" Padding="0"
+                               VerticalOptions="Center" HorizontalOptions="CenterAndExpand" >
+                            <Entry Placeholder="00"
+                                   x:Name="EntryIngredientsCount"
+                                   Margin="0,-5,0,-5"
+                                   BackgroundColor="Transparent"
+                                   TextColor="Black"
+                                   FontSize ="18"
+                                   Keyboard="Numeric"
+                                   HorizontalTextAlignment="Center"
+                                   Completed="EntryIngredientsCount_Completed"/>
                         </Frame>
-                        <Frame HeightRequest="17" WidthRequest="39" CornerRadius="10" BackgroundColor="#F4F4F8" BorderColor="#26808080" 
-                               Grid.Row="1" Grid.Column="2" HasShadow="False" VerticalOptions="End" >
-                            <Label Text="шт" TextColor="#000"  FontSize ="16"  Margin="0,-5,0,0" HorizontalTextAlignment="Center" />
+                        <Frame HeightRequest="35" CornerRadius="10" 
+                               BackgroundColor="#F4F4F8" BorderColor="#26808080" 
+                               Grid.Row="2" Grid.Column="2" Padding="5,0"
+                               HasShadow="False" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                            <Picker x:Name="PickerCountType"
+                                    TextColor="#000"  FontSize ="18"  
+                                    Margin="0,0,0,-5">
+                            </Picker>
                         </Frame>
-                        <BoxView Color="#C8C8C8" Margin="0,23,0,0" HeightRequest="1" Grid.ColumnSpan="3" Grid.Row="2" />
+                        <BoxView Color="#C8C8C8" Margin="0,20,0,0" HeightRequest="1" Grid.ColumnSpan="3" Grid.Row="3" />
                     </Grid>
 
-                    <Grid Margin="18,0,15,0" RowSpacing="-15"   >
+                    <Grid Margin="18,0,15,0" HorizontalOptions="Center">
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        
+
                         <Label Text="Этапы приготовления" TextColor="#000" FontSize ="20" 
-                               Grid.ColumnSpan="2" Grid.Row="0" Margin="0,24,0,0" HorizontalOptions="Start"/>
-                        <Image  Source="iconsPlus.png" HeightRequest="50" WidthRequest="50"  
-                                HorizontalOptions= "Center" Grid.Column="1" Grid.Row="1"/>
+                               Grid.Row="0" Margin="0,10,0,0" HorizontalOptions="Start"/>
+                        <CollectionView x:Name="CollectionViewRecipeSteps" IsVisible="False" ItemsSource="{Binding Steps}"
+                                        SelectionMode="None" Grid.Row="1">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="150" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Grid.Row="0"
+                                               BackgroundColor="#F4F4F8"
+                                               Grid.ColumnSpan="3"
+                                               CornerRadius="10"
+                                               Padding="0"
+                                               Margin="11,15"
+                                               HorizontalOptions="FillAndExpand"
+                                               HeightRequest="150">
+                                            <Editor Text="{Binding text}"
+                                                    Placeholder="Описание"
+                                                    FontSize ="20"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    VerticalOptions="FillAndExpand"/>
+                                        </Frame>
+                                        <Frame Grid.Row="1"
+                                               Grid.ColumnSpan="3"
+                                               CornerRadius="10"
+                                               Padding="0" Margin="11,15"
+                                               BackgroundColor="Transparent"
+                                               HasShadow="False"
+                                               HorizontalOptions="FillAndExpand"
+                                               HeightRequest="75">
+                                            <ImageButton Source="iconsAddPhoto"
+                                                         Clicked="StepImageAdd_Clicked" 
+                                                         BindingContext="{Binding StepId}"
+                                                         BackgroundColor="Transparent"
+                                                         Aspect="AspectFit" />
+                                        </Frame>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <ImageButton  Source="iconsPlus.png" BackgroundColor="Transparent"
+                                      Clicked="AddStep_Clicked"
+                                      HeightRequest="50" WidthRequest="50"  
+                                      HorizontalOptions= "Center" VerticalOptions="Center"
+                                      Grid.ColumnSpan="3" Grid.Row="2"/>
+                        <Frame x:Name="FrameShare" IsVisible="False"
+                            BackgroundColor="#F4F4F8" HasShadow="False"
+                            CornerRadius="10" Padding="0" Margin="0,10,0,10"
+                            HorizontalOptions= "Center" VerticalOptions="Center"
+                            Grid.ColumnSpan="3" Grid.Row="3">
+                            <Button Clicked="ButtonShare_Clicked" BackgroundColor="Transparent" Margin="0" Text="Опубликовать рецепт" TextColor="#000" FontSize ="20"/>
+                        </Frame>
                     </Grid>
+
                 </StackLayout>
             </ScrollView>
         </Grid>

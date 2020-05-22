@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RecipeApp.Views.ViewRecipe.StepsCarousel">
+  <ContentView.Content>
+      <StackLayout>
+            <CollectionView x:Name="CollectionViewSteps">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="150" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Frame Grid.Row="0" Grid.ColumnSpan="3"
+                                   BackgroundColor="#F4F4F8"
+                                   CornerRadius="10"
+                                   Padding="0"
+                                   Margin="11,15,11,0"
+                                   HorizontalOptions="FillAndExpand"
+                                   HeightRequest="150">
+                                <Label Text="{Binding text}"
+                                       FontSize ="20"
+                                       HorizontalOptions="FillAndExpand"
+                                       VerticalOptions="FillAndExpand"/>
+                            </Frame>
+                            <Frame Grid.Row="1" Grid.ColumnSpan="3"
+                                   CornerRadius="10"
+                                   Padding="0" Margin="11,15,11,0"
+                                   BackgroundColor="Transparent"
+                                   HasShadow="False"
+                                   HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                <Image Source="{Binding image}"
+                                       BackgroundColor="Transparent"
+                                       HeightRequest="150"
+                                       Aspect="AspectFill" />
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+      </StackLayout>
+  </ContentView.Content>
+</ContentView>

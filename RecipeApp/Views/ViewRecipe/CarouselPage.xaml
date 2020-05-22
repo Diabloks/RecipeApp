@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:RecipeApp.Views.ViewRecipe"
+             x:Class="RecipeApp.Views.ViewRecipe.CarouselPage">
+  <ContentView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ScrollView x:Name="Scroll"  
+                        Grid.Row="0" Grid.ColumnSpan="3"
+                        Orientation="Horizontal"
+                        Padding="0"
+                        HeightRequest="30"
+                        HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Horizontal">
+                    <Label x:Name="IngredientsElement"
+                           Text="Ингредиенты" 
+                           TextColor="#000" 
+                           FontFamily="Geometria-Bold.ttf#Geometria-Bold"
+                           FontSize ="20"
+                           VerticalOptions="End"/>
+                    <Label x:Name="StepsElement"
+                           Text="Этапы приготовления" 
+                           TextColor="#000"
+                           FontFamily="Geometria-Bold.ttf#Geometria-Bold"
+                           FontSize ="20"
+                           VerticalOptions="End"/>
+                    <Label x:Name="CommentsElement"
+                           Text="Отзывы" 
+                           TextColor="#000"
+                           FontFamily="Geometria-Bold.ttf#Geometria-Bold"
+                           FontSize ="20"
+                           VerticalOptions="End"/>
+                </StackLayout>
+            </ScrollView>
+            <controls:CarouselViewControl Grid.Row="1" Grid.ColumnSpan="3" x:Name="carViewControl" SizeChanged="CarView_SizeChanged" PositionSelected="Position_Changed"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

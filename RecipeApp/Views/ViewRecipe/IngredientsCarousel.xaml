@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RecipeApp.Views.ViewRecipe.IngredientsCarousel">
+    <ContentView.Content>
+        <CollectionView x:Name="CollectionViewIngredients">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image  Source="{Binding product.image}"
+                                Aspect="AspectFit"
+                                WidthRequest="60" HeightRequest="75" 
+                                Margin="20, 0, 0, 0"  
+                                Grid.Column="0" Grid.Row="0" />
+                        <Label Text="{Binding product.name}"
+                               Margin="10,0"
+                               TextColor="Black"
+                               Font ="Geometria-Bold.ttf#Geometria-Bold"
+                               FontSize ="25"
+                               VerticalOptions="Center"
+                               Grid.Column="1" Grid.Row="0"/>
+                        <Label Text="{Binding count}"
+                               TextColor="Black"
+                               Font ="Roboto-Regular.ttf#Roboto-Regular"
+                               FontSize ="19"
+                               Grid.Column="2" Grid.Row="0"
+                               VerticalOptions="Center" HorizontalOptions="End"/>
+                        <Label
+                            Text="{Binding countType}"
+                            Margin="0,0,20,0"
+                            TextColor="Black"
+                            Font ="Roboto-Regular.ttf#Roboto-Regular"
+                            FontSize ="19"
+                            Grid.Column="3" Grid.Row="0"
+                            VerticalOptions="Center" HorizontalOptions="End"/>
+                        <BoxView 
+                            Color="#F4F4F8"
+                            Margin="15,2,15,10" 
+                            HeightRequest="2"  
+                            Grid.ColumnSpan="4" Grid.Row="1"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentView.Content>
+</ContentView>

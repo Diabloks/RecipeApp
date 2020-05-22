@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android;
+﻿using Android;
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.Design.BottomNavigation;
 using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Widget;
@@ -16,6 +12,7 @@ using RecipeApp.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Android.Content.Res;
+using Android.Util;
 
 [assembly: ExportRenderer(typeof(AppShell), typeof(MyShellRenderer))]
 namespace RecipeApp.Droid
@@ -47,10 +44,11 @@ namespace RecipeApp.Droid
 
         }
 
-        public void SetAppearance(BottomNavigationView bottomView, ShellAppearance appearance)
+        public void SetAppearance(BottomNavigationView bottomView, IShellAppearanceElement appearance)
         {
-            bottomView.ItemIconSize = 100;
+            bottomView.ItemIconSize = (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, 35, bottomView.Context.Resources.DisplayMetrics);
             bottomView.SetShiftMode(false, false);
+            bottomView.LabelVisibilityMode = LabelVisibilityMode.LabelVisibilityUnlabeled;
 
             IMenu myMenu = bottomView.Menu;
 
@@ -84,8 +82,6 @@ namespace RecipeApp.Droid
                 myItemFive.SetIcon(Resource.Drawable.iconsUserSelected); //Когда иконка в активном состоянии
             else
                 myItemFive.SetIcon(Resource.Drawable.iconsUser); //Когда иконка в не активном состоянии
-
-            //Таже логика если есть второй, третий элемент в tabbar
 
         }
     }

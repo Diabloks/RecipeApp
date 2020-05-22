@@ -8,7 +8,7 @@
        xmlns:local="clr-namespace:RecipeApp;assembly=RecipeApp"
        xmlns:account="clr-namespace:RecipeApp.Views.Account"
        xmlns:main="clr-namespace:RecipeApp.Views.Main"
-       
+       xmlns:user="clr-namespace:RecipeApp.Views.User"
        Title="RecipeApp"
        x:Class="RecipeApp.AppShell">
 
@@ -36,20 +36,20 @@
 
     <!-- Your Pages -->
     <TabBar>
-        <Tab Title=""> <!--Home-->
+        <Tab> <!--Home-->
             <ShellContent ContentTemplate="{DataTemplate main:MainPage}" />
         </Tab>
-        <Tab Title=""> <!--Search-->
+        <Tab> <!--Search-->
             <ShellContent ContentTemplate="{DataTemplate allviews:SearchIngredients}" />
         </Tab>
-        <Tab Title=""> <!--Add-->
+        <Tab> <!--Add-->
             <ShellContent ContentTemplate="{DataTemplate allviews:CreateRecipe}" />
         </Tab>
-        <Tab Title=""> <!--Favorite-->
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        <Tab> <!--Favorite-->
+            <ShellContent ContentTemplate="{DataTemplate user:VIewFavourite}" />
         </Tab>
-        <Tab Title=""> <!--Profile-->
-            <ShellContent ContentTemplate="{DataTemplate account:SignUpPage}" />
+        <Tab> <!--Profile-->
+            <ShellContent ContentTemplate="{DataTemplate user:ViewProfile}" />
         </Tab>
     </TabBar>
 
