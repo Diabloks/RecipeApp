@@ -21,7 +21,8 @@ namespace RecipeApp.Models
 
         public DataBase()
         {
-            ip = "http://f0423389.xsph.ru/";
+            //ip = "http://f0423389.xsph.ru/"; //Прошлый хостинг (все еще работает, запасной вариант)
+            ip = "http://recipeapp.s91548kn.beget.tech/";
             client = new HttpClient();
         }
 
@@ -50,7 +51,7 @@ namespace RecipeApp.Models
             List<Product> ProductsList = new List<Product>();
 
             string json = "";
-            if (Settings.Products == null || Settings.Products == "")
+            if (Settings.Products == string.Empty)
             {
                 var get = client.GetAsync(uri);
 
@@ -103,9 +104,86 @@ namespace RecipeApp.Models
                 Settings.Products = json;
         }
 
-        public void CreateUser(string log, string pass, string email)
+        public bool LogIn(string log, string pass)
         {
+            Uri uri = new Uri(this.ip + "LoginUser.php");
 
+            var formContent = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("user_login", log),
+                new KeyValuePair<string, string>("user_password", pass)
+            });
+
+            var post = client.PostAsync(uri, formContent);
+            HttpResponseMessage response = post.Result;
+            if (response.IsSuccessStatusCode)
+            {
+                HttpContent content = response.Content;
+                var answer = content.ReadAsStringAsync();
+                try
+                {
+                    User me = JsonConvert.DeserializeObject<User>(answer.Result);
+                    if (me.img_url != null)
+                    {
+                        try
+                        {
+                            Uri imgUri = new Uri(me.img_url);
+                            me.image = ImageSource.FromUri(imgUri);
+                        }
+                        catch (Exception)
+                        {
+                            me.image = ImageSource.FromFile("iconsUser.png");
+                        }
+                    }
+                    else
+                        me.image = ImageSource.FromFile("iconsUser.png");
+                    Settings.myProfile = answer.Result;
+                    Settings.myPass = pass;
+                    Application.Current.Properties["MyProfile"] = me;
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+            else
+                return false;
+        }
+
+        public bool CreateUser(string log, string pass, string email)
+        {
+            Uri uri = new Uri(this.ip + "CreateUser.php");
+
+            var formContent = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("user_login", log),
+                new KeyValuePair<string, string>("user_password", pass),
+                new KeyValuePair<string, string>("email", email)
+            });
+
+            var post = client.PostAsync(uri, formContent);
+            HttpResponseMessage response = post.Result;
+            if (response.IsSuccessStatusCode)
+            {
+                HttpContent content = response.Content;
+                var answer = content.ReadAsStringAsync();
+                try
+                {
+                    User me = JsonConvert.DeserializeObject<User>(answer.Result);
+                    me.image = ImageSource.FromFile("iconsUser.png");
+                    Settings.myProfile = answer.Result;
+                    Settings.myPass = pass;
+                    Application.Current.Properties["MyProfile"] = me;
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+            else
+                return false;
         }
 
         public bool CreateRecipe(Recipe created)
@@ -125,6 +203,101 @@ namespace RecipeApp.Models
                 return true;
             else
                 return false;
+        }
+
+        public bool UpdateUsersSettings(User me, string pass)
+        {
+            if (Application.Current.Properties.ContainsKey("MyProfile") && Application.Current.Properties["MyProfile"] != null)
+            {
+                try
+                {
+                    if (pass == null)
+                        pass = Settings.myPass;
+                    me.image = null;
+                    string json = JsonConvert.SerializeObject(me);
+
+                    Uri uri = new Uri(this.ip + "UpdateUsersSettingsData.php");
+
+                    var formContent = new FormUrlEncodedContent(new[]
+                    {
+                        new KeyValuePair<string, string>("json", json),
+                        new KeyValuePair<string, string>("password", pass),
+                    });
+
+                    var post = client.PostAsync(uri, formContent);
+                    HttpResponseMessage response = post.Result;
+                    if (response.IsSuccessStatusCode)
+                        return true;
+                    else
+                        return false;
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    return false;
+                }
+                
+            }
+            else
+                return false;
+        }
+
+        public IList<Recipe> SearchRecipeName(string name)
+        {
+            Uri uri = new Uri(this.ip + "GetRecipesFilter.php");
+
+            IList<Recipe> RecipeList = new List<Recipe>();
+
+            var formContent = new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair<string, string>("pattern", name)
+                });
+
+            var post = client.PostAsync(uri, formContent);
+
+            HttpResponseMessage response = post.Result;
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                HttpContent responseContent = response.Content;
+                var jsnString = responseContent.ReadAsStringAsync();
+
+                string json = jsnString.Result;
+                JsonTextReader reader = new JsonTextReader(new StringReader(json));
+                reader.SupportMultipleContent = true;
+
+                while (true)
+                {
+                    if (!reader.Read())
+                    {
+                        break;
+                    }
+
+                    JsonSerializer serializer = new JsonSerializer();
+                    Recipe recipe = serializer.Deserialize<Recipe>(reader);
+
+                    if (recipe.img_url != null)
+                    {
+                        try
+                        {
+                            Uri imgUri = new Uri(recipe.img_url);
+                            ImageSource img = ImageSource.FromUri(imgUri);
+                            recipe.image = img;
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.Message);
+                            ImageSource img = ImageSource.FromFile("defaultRecipe.jpg");
+                            recipe.image = img;
+                        }
+                    }
+
+                    RecipeList.Add(recipe);
+                }
+
+                return RecipeList;
+            }
+            return null;
         }
 
         public Recipe GetRecipeByID(int id)
@@ -149,8 +322,9 @@ namespace RecipeApp.Models
                 {
                     recipe.image = ImageSource.FromUri(new Uri(recipe.img_url));
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
+                    Console.WriteLine(e.Message);
                     recipe.image = ImageSource.FromFile("defaultRecipe.jpg");
                 }
 
@@ -168,11 +342,228 @@ namespace RecipeApp.Models
 
                 return recipe;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return null;
             }
+        }
 
+        public bool AddToFavourite(int id)
+        {
+            if (Application.Current.Properties.ContainsKey("MyProfile") && Application.Current.Properties["MyProfile"] != null)
+            {
+                User me = Application.Current.Properties["MyProfile"] as User;
+                Uri uri = new Uri(this.ip + "CreateFavorite.php");
+
+                var formContent = new FormUrlEncodedContent(new[]
+                    {
+                    new KeyValuePair<string, string>("recipe_id", id.ToString()),
+                    new KeyValuePair<string, string>("login", me.login),
+                });
+
+                var post = client.PostAsync(uri, formContent);
+                HttpResponseMessage response = post.Result;
+                if (response.IsSuccessStatusCode)
+                    return true;
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
+
+        public bool ChangeRateRecipe(int recipeId, int value)
+        {
+            Uri uri = new Uri(this.ip + "AddRatingRecipe.php");
+
+            if (value > 1)
+                value = 1;
+            if (value < 0)
+                value = 0;
+            var formContent = new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair<string, string>("recipe_id", recipeId.ToString()),
+                    new KeyValuePair<string, string>("value", value.ToString()),
+                });
+
+            var post = client.PostAsync(uri, formContent);
+            HttpResponseMessage response = post.Result;
+            if (response.IsSuccessStatusCode)
+                return true;
+            else
+                return false;
+        }
+
+        public string CreateComment(int recipeId, Comment comment)
+        {
+            Uri uri = new Uri(this.ip + "CreateComment.php");
+
+            try
+            {
+                string json = JsonConvert.SerializeObject(comment);
+
+                var formContent = new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair<string, string>("id", recipeId.ToString()),
+                    new KeyValuePair<string, string>("json", json),
+                });
+
+                var post = client.PostAsync(uri, formContent);
+                HttpResponseMessage response = post.Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = response.Content.ReadAsStringAsync();
+                    string result = content.Result;
+                    return result;
+                }
+                else
+                    return null;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+            
+        }
+
+        public IList<Recipe> GetUserRecipes(string login)
+        {
+            Uri uri = new Uri(this.ip + "GetUserRecipes.php");
+
+            IList<Recipe> RecipeList = new List<Recipe>();
+
+            var formContent = new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair<string, string>("login", login)
+                });
+
+            var post = client.PostAsync(uri, formContent);
+
+            HttpResponseMessage response = post.Result;
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                HttpContent responseContent = response.Content;
+                var jsnString = responseContent.ReadAsStringAsync();
+
+                string json = jsnString.Result;
+                JsonTextReader reader = new JsonTextReader(new StringReader(json));
+                reader.SupportMultipleContent = true;
+
+                while (true)
+                {
+                    if (!reader.Read())
+                    {
+                        break;
+                    }
+
+                    JsonSerializer serializer = new JsonSerializer();
+                    Recipe recipe = serializer.Deserialize<Recipe>(reader);
+
+                    if (recipe.img_url != null)
+                    {
+                        try
+                        {
+                            Uri imgUri = new Uri(recipe.img_url);
+                            ImageSource img = ImageSource.FromUri(imgUri);
+                            recipe.image = img;
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.Message);
+                            ImageSource img = ImageSource.FromFile("defaultRecipe.jpg");
+                            recipe.image = img;
+                        }
+                    }
+
+                    RecipeList.Add(recipe);
+                }
+
+                return RecipeList;
+            }
+            return null;
+        }
+
+        public IList<Recipe> GetFavourite(string login)
+        {
+            Uri uri = new Uri(this.ip + "GetFavorite.php");
+
+            IList<Recipe> RecipeList = new List<Recipe>();
+
+            var formContent = new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair<string, string>("user_login", login)
+                });
+
+            var post = client.PostAsync(uri, formContent);
+
+            HttpResponseMessage response = post.Result;
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                HttpContent responseContent = response.Content;
+                var jsnString = responseContent.ReadAsStringAsync();
+
+                string json = jsnString.Result;
+                JsonTextReader reader = new JsonTextReader(new StringReader(json));
+                reader.SupportMultipleContent = true;
+
+                while (true)
+                {
+                    if (!reader.Read())
+                    {
+                        break;
+                    }
+
+                    JsonSerializer serializer = new JsonSerializer();
+                    Recipe recipe = serializer.Deserialize<Recipe>(reader);
+
+                    if (recipe.img_url != null)
+                    {
+                        try
+                        {
+                            Uri imgUri = new Uri(recipe.img_url);
+                            ImageSource img = ImageSource.FromUri(imgUri);
+                            recipe.image = img;
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.Message);
+                            ImageSource img = ImageSource.FromFile("defaultRecipe.jpg");
+                            recipe.image = img;
+                        }
+                    }
+
+                    RecipeList.Add(recipe);
+                }
+
+                return RecipeList;
+            }
+            return null;
+        }
+
+        public bool ChangeRateComment(int commentId, int value)
+        {
+            Uri uri = new Uri(this.ip + "ChangeRatingComment.php");
+
+            if (value > 1)
+                value = 1;
+            if (value < 0)
+                value = 0;
+            var formContent = new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair<string, string>("comment_id", commentId.ToString()),
+                    new KeyValuePair<string, string>("value", value.ToString()),
+                });
+
+            var post = client.PostAsync(uri, formContent);
+            HttpResponseMessage response = post.Result;
+            if (response.IsSuccessStatusCode)
+                return true;
+            else
+                return false;
         }
 
         public IList<Recipe> GetRecipes()
@@ -212,8 +603,9 @@ namespace RecipeApp.Models
                             ImageSource img = ImageSource.FromUri(imgUri);
                             recipe.image = img;
                         }
-                        catch (Exception)
+                        catch (Exception e)
                         {
+                            Console.WriteLine(e.Message);
                             ImageSource img = ImageSource.FromFile("defaultRecipe.jpg");
                             recipe.image = img;
                         }

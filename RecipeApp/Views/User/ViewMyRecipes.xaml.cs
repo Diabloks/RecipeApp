@@ -6,11 +6,12 @@ using RecipeApp.Models;
 
 namespace RecipeApp.Views.User
 {
-    public partial class VIewFavourite : ContentPage
+    public partial class ViewMyRecipes : ContentPage
     {
         private DataBase db = new DataBase();
-        private IList<Recipe> Favourites { get; set; }
-        public VIewFavourite()
+        private IList<Recipe> Recipes { get; set; }
+
+        public ViewMyRecipes()
         {       
             InitializeComponent();
         }
@@ -20,18 +21,18 @@ namespace RecipeApp.Views.User
             base.OnAppearing();
             if (!(Application.Current.Properties.ContainsKey("MyProfile") && Application.Current.Properties["MyProfile"] != null))
             {
-                await DisplayAlert("", "Для просмотра избранных рецептов войдите в свою учетную запись", "Ок");
+                await DisplayAlert("", "Ошибка не удалось получить данные учетной записи", "Ок");
                 Shell appshell = Application.Current.MainPage as Shell;
                 await appshell.GoToAsync("app://RecipeApp.AppShell/profileTab", false);
             }
             else
             {
                 Models.User me = Application.Current.Properties["MyProfile"] as Models.User;
-                Favourites = db.GetFavourite(me.login);
-                if (Favourites == null)
-                    Favourites = new List<Recipe>();
-                favouriteCount.Text = Favourites.Count.ToString() + " рецептов";
-                carView.ItemsSource = Favourites;
+                Recipes = db.GetUserRecipes(me.login);
+                if (Recipes == null)
+                    Recipes = new List<Recipe>();
+                favouriteCount.Text = Recipes.Count.ToString() + " рецептов";
+                carView.ItemsSource = Recipes;
             }
         }
 

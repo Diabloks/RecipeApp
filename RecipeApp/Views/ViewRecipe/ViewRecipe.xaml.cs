@@ -35,27 +35,42 @@ namespace RecipeApp.Views.ViewRecipe
             }
         }
 
-        private void Carousel_SizeChanged(object sender, EventArgs e)
-        {
-        }
-
         private async void BackButton_Click(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }
 
-        private void Serving_Changed(object sender, EventArgs e)
+        private void AddToFavourite_Clicked(object sender, EventArgs e)
         {
+            if (Application.Current.Properties.ContainsKey("MyProfile") && Application.Current.Properties["MyProfile"] != null)
+            {
+                db.AddToFavourite(recipe.id);
+            }
+        }
 
+        private void RecipeLike_Clicked(object sender, EventArgs e)
+        {
+            if (Application.Current.Properties.ContainsKey("MyProfile") && Application.Current.Properties["MyProfile"] != null)
+            {
+                db.ChangeRateRecipe(recipe.id, 1);
+            }
+        }
+
+        private void RecipeDis_Clicked(object sender, EventArgs e)
+        {
+            if (Application.Current.Properties.ContainsKey("MyProfile") && Application.Current.Properties["MyProfile"] != null)
+            {
+                db.ChangeRateRecipe(recipe.id, 0);
+            }
         }
 
         private void StepperMinus_Clicked(object sender, EventArgs e)
         {
-
+            Console.WriteLine("");
         }
         private void StepperPlus_Clicked(object sender, EventArgs e)
         {
-
+            Console.WriteLine("");
         }
     }
 }

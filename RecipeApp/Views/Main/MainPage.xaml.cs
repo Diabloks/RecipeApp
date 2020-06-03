@@ -30,20 +30,20 @@ namespace RecipeApp.Views.Main
             RecipesCollectionView.ItemsSource = AllRecipes;
         }
 
-        private void RefreshList(object sender, EventArgs args)
+        private void SearchCommand(object sender, EventArgs e)
         {
-            AllRecipes = db.GetRecipes() as List<Recipe>;
+            SearchBar searchBar = sender as SearchBar;
+            AllRecipes = db.SearchRecipeName(searchBar.Text) as List<Recipe>;
             RecipesCollectionView.ItemsSource = AllRecipes;
         }
 
-        void FilterClicked(object sender, EventArgs args)
+        private void RefreshList(object sender, EventArgs args)
         {
-            FrameFilter.IsVisible = true;
-        }
-
-        void FilterSelected_Clicked(object sender, EventArgs args)
-        {
-            FrameFilter.IsVisible = false;
+            searchBar.Text = null;
+            RefreshView view = sender as RefreshView;
+            AllRecipes = db.GetRecipes() as List<Recipe>;
+            RecipesCollectionView.ItemsSource = AllRecipes;
+            view.IsRefreshing = false;
         }
 
         private async void SelectionChanged(object sender, EventArgs args)

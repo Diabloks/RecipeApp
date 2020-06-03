@@ -42,16 +42,27 @@ namespace RecipeApp.Views
             PickerTimeType.SelectedItem = timeType[0];
 
             object obj = "";
-            if(Application.Current.Properties.TryGetValue("ProductsList", out obj));
-                products = obj as List<Product>;
+            if (Application.Current.Properties.TryGetValue("ProductsList", out obj)) ;
+            products = obj as List<Product>;
             IngredientsPicker.ItemsSource = products;
             IngredientsPicker.SelectedItem = products[0];
 
         }
 
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (!(Application.Current.Properties.ContainsKey("MyProfile") && Application.Current.Properties["MyProfile"] != null))
+            {
+                await DisplayAlert("", "Для добавление рецепта войдите в свою учетную запись", "Ок");
+                Shell appshell = Application.Current.MainPage as Shell;
+                await appshell.GoToAsync("app://RecipeApp.AppShell/profileTab", false);
+            }
+        }
+
         private void UploadRecipe()
         {
-            for(int i=0; i<Steps.Count; i++)
+            for (int i = 0; i < Steps.Count; i++)
             {
                 if (imgBytes[i] != null)
                 {
@@ -65,10 +76,10 @@ namespace RecipeApp.Views
                     Steps[i].image = null;
                 }
             }
-            if(mainPhotoBytes != null)
+            if (mainPhotoBytes != null)
             {
                 string url = db.UploadPhoto(mainPhotoBytes);
-                if(url == null)
+                if (url == null)
                 {
                     DisplayAlert("Ошибка", "Не удалось создать рецепт, попробуйте еще раз", "Ок");
                     return;
@@ -76,6 +87,8 @@ namespace RecipeApp.Views
                 recipe.img_url = url;
                 recipe.image = null;
             }
+            Models.User me = Application.Current.Properties["MyProfile"] as Models.User;
+            recipe.login = me.login;
             bool result = db.CreateRecipe(recipe);
             if (result)
                 DisplayAlert(null, "Рецепт успешно создан", "Ок");
@@ -229,7 +242,7 @@ namespace RecipeApp.Views
                 return;
             }
 
-            if(EntryTime.Text != null)
+            if (EntryTime.Text != null)
                 recipe.time = int.Parse(EntryTime.Text);
             else
             {
@@ -239,7 +252,7 @@ namespace RecipeApp.Views
 
             recipe.servings = int.Parse(labelServings.Text);
 
-            if(ingredients.Count != 0)
+            if (ingredients.Count != 0)
                 recipe.ingredients = ingredients;
             else
             {
@@ -248,8 +261,8 @@ namespace RecipeApp.Views
             }
             recipe.image = MainPhoto.Source;
             recipe.timeType = PickerTimeType.SelectedItem.ToString();
-            
-            if(Steps.Count !=0)
+
+            if (Steps.Count != 0)
                 recipe.steps = Steps;
             else
             {

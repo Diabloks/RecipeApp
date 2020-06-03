@@ -32,15 +32,10 @@ namespace RecipeApp.Views.ViewRecipe
                 viewList.Add(ingred);
                 View steps = new StepsCarousel{ BindingContext = recipe.steps };
                 viewList.Add(steps);
-                View comments = new CommentsCarousel();
+                View comments = new CommentsCarousel { BindingContext = recipe };
                 viewList.Add(comments);
                 carViewControl.ItemsSource = viewList;
             }
-        }
-
-        private void CarView_SizeChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void Position_Changed(object sender, TappedEventArgs e)

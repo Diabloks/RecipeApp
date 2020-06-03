@@ -36,9 +36,8 @@
                                    BackgroundColor="Transparent"
                                    HasShadow="False"
                                    HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                <Image Source="{Binding image}"
+                                <Image Source="{Binding image}" HeightRequest="{Binding imgHeight}"
                                        BackgroundColor="Transparent"
-                                       HeightRequest="150"
                                        Aspect="AspectFill" />
                             </Frame>
                         </Grid>

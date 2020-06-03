@@ -29,6 +29,15 @@ namespace RecipeApp.Helpers
         private const string SettingsKey = "settings_key";
         private static readonly string SettingsDefault = string.Empty;
 
+        private const string ProductsKey = "products_key";
+        private static readonly string ProductsDefault = string.Empty;
+
+        private const string myProfileKey = "myProfile_key";
+        private static readonly string myProfileDefault = string.Empty;
+
+        private const string myPassKey = "myPass_key";
+        private static readonly string myPassDefault = string.Empty;
+
         #endregion
 
 
@@ -48,13 +57,36 @@ namespace RecipeApp.Helpers
         {
             get
             {
-                return AppSettings.GetValueOrDefault(SettingsKey, SettingsDefault);
+                return AppSettings.GetValueOrDefault(ProductsKey, ProductsDefault);
             }
             set
             {
-                AppSettings.AddOrUpdateValue(SettingsKey, value);
+                AppSettings.AddOrUpdateValue(ProductsKey, value);
             }
         }
 
+        public static string myProfile
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(myProfileKey, myProfileDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(myProfileKey, value);
+            }
+        }
+
+        public static string myPass
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(myPassKey, myPassDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(myPassKey, value);
+            }
+        }
     }
 }

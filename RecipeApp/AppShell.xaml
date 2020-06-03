@@ -36,20 +36,18 @@
 
     <!-- Your Pages -->
     <TabBar>
-        <Tab> <!--Home-->
+        <Tab Route="homeTab">
+            <!--Home-->
             <ShellContent ContentTemplate="{DataTemplate main:MainPage}" />
         </Tab>
-        <Tab> <!--Search-->
-            <ShellContent ContentTemplate="{DataTemplate allviews:SearchIngredients}" />
-        </Tab>
-        <Tab> <!--Add-->
+        <Tab Route="createRecipeTab"> <!--Add-->
             <ShellContent ContentTemplate="{DataTemplate allviews:CreateRecipe}" />
         </Tab>
-        <Tab> <!--Favorite-->
+        <Tab Route="favoriteTab"> <!--Favorite-->
             <ShellContent ContentTemplate="{DataTemplate user:VIewFavourite}" />
         </Tab>
-        <Tab> <!--Profile-->
-            <ShellContent ContentTemplate="{DataTemplate user:ViewProfile}" />
+        <Tab Route="profileTab"> <!--Profile-->
+            <ShellContent ContentTemplate="{DataTemplate account:nonRegis}" />
         </Tab>
     </TabBar>
 

@@ -31,71 +31,92 @@
 
                             <Grid Padding="0,14,0,0" HorizontalOptions="CenterAndExpand" RowSpacing="10">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="34" />
-                                    <RowDefinition Height="24" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
                                 <Label
                                     x:Name="LabelRecipeName"
                                     Text="{Binding name}"
                                     TextColor="#000" 
                                     FontFamily="Geometria-Bold.ttf#Geometria-Bold"
-                                    FontSize ="25" 
+                                    FontSize ="25" Padding="0" Margin="0"
                                     HorizontalOptions="Center" 
-                                    Grid.ColumnSpan="5" Grid.Row="0"/>
+                                    Grid.Row="0"/>
                                 <Label
                                     x:Name="LabelUserName"
                                     Text="{Binding login}" 
-                                    HorizontalOptions="CenterAndExpand" 
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="Center"
                                     TextColor="#000" 
-                                    FontSize ="16"
+                                    FontSize ="16" Padding="0" Margin="0"
                                     FontFamily="Roboto-Regular.ttf#Roboto-Regular"
-                                    Grid.ColumnSpan="5" Grid.Row="1"/>
-                                <Label
+                                    Grid.Row="1"/>
+                                <StackLayout Orientation="Horizontal" 
+                                             HorizontalOptions="Center"
+                                             Grid.Row="2">
+                                    <Label
                                     x:Name="LabelTime"
                                     Text="{Binding time}" 
                                     TextColor="#000"
                                     FontFamily="Geometria-Bold.ttf#Geometria-Bold"
                                     FontSize ="18"
-                                    HorizontalOptions="Center" VerticalOptions="Center"
-                                    Grid.Column="0" Grid.Row="2"/>
-                                <Label 
+                                    HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label 
                                     Text="минут" 
                                     TextColor="#000"
                                     FontFamily="Geometria-Bold.ttf#Geometria-Bold"
                                     FontSize ="18"
-                                    HorizontalOptions="Center" VerticalOptions="Center"
-                                    Grid.Column="1" Grid.Row="2"/>
-                                <BoxView 
+                                    HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <BoxView 
                                     Color="#D9D9D9" 
                                     HeightRequest="15" 
-                                    WidthRequest="2" 
-                                    Grid.Column="2" Grid.Row="2" />
-                                <Image 
+                                    WidthRequest="2"/>
+                                    <ImageButton
+                                    Clicked="AddToFavourite_Clicked"
+                                    BackgroundColor="Transparent"
                                     Source="iconsRate.png" 
                                     Margin="0"  
                                     HeightRequest="18" 
-                                    WidthRequest="18"  
-                                    Grid.Column="3" Grid.Row="2"
+                                    WidthRequest="18"
                                     VerticalOptions="Center"/>
-                                <Label
+                                    <Label
                                     x:Name="LabelRating"
                                     Text="{Binding rating}" 
                                     FontSize ="18" 
                                     TextColor="#000"  
                                     FontFamily="Geometria-Bold.ttf#Geometria-Bold"
-                                    VerticalOptions="Center"
-                                    Grid.Column="4" Grid.Row="2"/>
+                                    VerticalOptions="Center"/>
+                                </StackLayout>
+                            </Grid>
+                            <Grid Margin="0,115,0,0" ColumnSpacing="10" HorizontalOptions="CenterAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Нравится рецепт?"
+                                       TextColor="#000"
+                                       FontFamily="Geometria-Bold.ttf#Geometria-Bold"
+                                       FontSize ="18"
+                                       HorizontalOptions="Center" VerticalOptions="Center"
+                                       Grid.Column="0" Grid.Row="0"/>
+                                <ImageButton Clicked="RecipeLike_Clicked"
+                                             BackgroundColor="Transparent"
+                                             Source="iconsUp.png"
+                                             HeightRequest="25" WidthRequest="25"
+                                             Grid.Column="1" Grid.Row="0"/>
+                                <ImageButton Clicked="RecipeDis_Clicked"
+                                             BackgroundColor="Transparent"
+                                             Source="iconsDown.png"
+                                             HeightRequest="25" WidthRequest="25"
+                                             Grid.Column="2" Grid.Row="0"/>
                             </Grid>
 
-                            <Grid Padding="0,125,0,0" HorizontalOptions="CenterAndExpand">
+                            <Grid Margin="0,145,0,0" HorizontalOptions="CenterAndExpand">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="80" />
                                 </Grid.RowDefinitions>
@@ -108,8 +129,7 @@
                                 </Frame>
 
                             </Grid>
-
-                            <Grid Margin="0,130,0,0"  HorizontalOptions="CenterAndExpand" RowSpacing="0" ColumnSpacing="50">
+                            <Grid Margin="0,150,0,0"  HorizontalOptions="CenterAndExpand" RowSpacing="0" ColumnSpacing="50">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="54" />
@@ -121,7 +141,6 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Label
-                                    BindingContextChanged="Serving_Changed"
                                     Text="Порций (1)" 
                                     TextColor="#000" 
                                     FontFamily="Geometria-Bold.ttf#Geometria-Bold"
@@ -148,8 +167,7 @@
                                     HeightRequest="25" WidthRequest="25" 
                                     HorizontalOptions="End" />
                             </Grid>
-
-                            <views:CarouselPage x:Name="Carousel" BackgroundColor="White" Margin="0,220,0,0" SizeChanged="Carousel_SizeChanged"/>
+                            <views:CarouselPage x:Name="Carousel" BackgroundColor="White" Margin="0,230,0,0" VerticalOptions="FillAndExpand"/>
                         </Grid>
 
                     </StackLayout>

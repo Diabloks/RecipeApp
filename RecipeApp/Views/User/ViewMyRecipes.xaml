@@ -2,11 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
-             x:Class="RecipeApp.Views.User.VIewFavourite">
+             x:Class="RecipeApp.Views.User.ViewMyRecipes">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Margin="0,62,0,0">
-                <Label Text="Избранное" FontSize ="25" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#D0D0D0" />
+                <Label Text="Мои рецепты" FontSize ="25" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#D0D0D0" />
                 <Label x:Name="favouriteCount" Text="0 рецептов" FontSize ="15" FontAttributes="Bold" HorizontalOptions="Center"  Margin="0,7,0,0" TextColor="#D0D0D0" />
                 <CarouselView x:Name="carView">
                     <CarouselView.ItemTemplate>
@@ -39,7 +39,7 @@
                                 <Image Source="iconsRate.png" Margin="16,0,0,0"  HeightRequest="14" WidthRequest="14"  Grid.Column="2" Grid.Row="0"></Image>
                                 <Label Text="{Binding rating}" FontSize ="14" TextColor="#000" Grid.Column="3" Grid.Row="0"/>
                                 <Label Text="{Binding login}" FontSize ="14" TextColor="#000" Grid.Column="4" Grid.Row="0" HorizontalOptions="Center"/>
-                                <Label Text="{Binding name}" FontSize ="16" FontAttributes="Bold" HorizontalOptions="Start" Grid.ColumnSpan="5" Grid.Row="1" TextColor="#000" />
+                                <Label Text="{Binding name}" FontSize ="16" FontAttributes="Bold" HorizontalOptions="Start" Grid.ColumnSpan="5" Grid.Row="1" TextColor="#000" Margin="0,0,20,0"/>
                             </Grid>
                             </StackLayout>
                         </DataTemplate>

@@ -8,26 +8,20 @@
             <StackLayout x:Name ="Change" >
 
                 <Grid>
-
-
-                    <Image Source="iconsBack.png" VerticalOptions="Start" HorizontalOptions="Start" HeightRequest="25" Margin ="13, 44, 337, 0" WidthRequest="25"/>
-                        <Label Text="Сохранить" FontSize ="18" HorizontalOptions="End" Margin="250,48,15,0" />
+                    <ImageButton Clicked="BackButton_Clicked" Source="iconsBack.png" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" HeightRequest="25" Margin ="13, 44, 337, 0" WidthRequest="25"/>
+                    <Button Clicked="SaveButton_Clicked" Text="Сохранить" FontSize ="18" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="End" VerticalOptions="Start" Margin="250,48,15,0" />
                     <Frame CornerRadius="100" HeightRequest="108" VerticalOptions="Start"  HasShadow="False" BackgroundColor="#F4F4F8"  Margin ="134, 90, 133, 0" WidthRequest="108" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True">
-                        <Image Source="iconsUser.png" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                        <ImageButton x:Name="ProfilePhoto" Clicked="PhotoChange_Clicked" Source="{Binding image}" Aspect="AspectFill" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
                     </Frame>
-                    <StackLayout Padding="0,277,0,517" >
-                        <Label Text="Имя пользователя" TextColor="#D0D0D0" HorizontalOptions="Start" Margin ="15,0,0,0 " FontSize ="16"></Label>
-                        <BoxView Color="#C8C8C8" Margin="15, 5, 15, 0"  HeightRequest="1" WidthRequest="345" />
-                        <Label Text="Описание профиля"  TextColor="#D0D0D0" HorizontalOptions="Start" Margin ="14, 50,0,0 " FontSize ="16"></Label>
-                        <BoxView Color="#C8C8C8" Margin="15, 5, 15, 0"  HeightRequest="1" WidthRequest="345" />
-                        <Label Text="Номер телефона"  TextColor="#D0D0D0" HorizontalOptions="Start" Margin ="15,50,0,0 " FontSize ="16"></Label>
-                        <BoxView Color="#C8C8C8" Margin="15, 5, 15, 0"  HeightRequest="1" WidthRequest="345" />
-                        <Label Text="Электронная почта"  TextColor="#D0D0D0" HorizontalOptions="Start" Margin ="14,50,0,0 " FontSize ="16"></Label>
-                        <BoxView Color="#C8C8C8" Margin="15, 5, 15, 0"  HeightRequest="1" WidthRequest="345" />
-                        <Label Text="Сменить пароль"  FontAttributes="Bold" TextColor="#D0D0D0" HorizontalOptions="Start" Margin ="15,50,0,0 " FontSize ="16"></Label>
-                        <BoxView Color="#C8C8C8" Margin="15, 0, 0, 0"  HorizontalOptions="Start" HeightRequest="1" WidthRequest="135" />
-                        <Label Text="Удалить аккаунт"  FontAttributes="Bold" TextColor="#D0D0D0" HorizontalOptions="Start" Margin ="15,38,0,0 " FontSize ="16"></Label>
-                        <BoxView Color="#C8C8C8" Margin="15, 0, 0, 0"  HorizontalOptions="Start" HeightRequest="1" WidthRequest="135" />
+                    <StackLayout Margin="0,277,0,517" >
+                        <Entry Text="{Binding login}" Placeholder="Имя пользователя"  TextColor="#D0D0D0" HorizontalOptions="Start" Margin ="15,0,0,0 " FontSize ="16"/>
+                        <BoxView Color="#C8C8C8" Margin="15, 0"  HeightRequest="1" WidthRequest="345" />
+                        <Entry Text="{Binding email}" Placeholder="Электронная почта"  TextColor="#D0D0D0" HorizontalOptions="Start" Margin ="15,20,0,0 " FontSize ="16"/>
+                        <BoxView Color="#C8C8C8" Margin="15, 0"  HeightRequest="1" WidthRequest="345" />
+                        <Entry x:Name="newPass" IsPassword="True" Placeholder="Новый пароль"  TextColor="#D0D0D0" HorizontalOptions="Start" Margin ="15,20,0,0 " FontSize ="16"/>
+                        <BoxView Color="#C8C8C8" Margin="15, 0"  HeightRequest="1" WidthRequest="345" />
+                        <Entry x:Name="newPassCheck" IsPassword="True" Placeholder="Повторите новый пароль"  TextColor="#D0D0D0" HorizontalOptions="Start" Margin ="15,20,0,0 " FontSize ="16"/>
+                        <BoxView Color="#C8C8C8" Margin="15, 0"  HeightRequest="1" WidthRequest="345" />
                     </StackLayout>
 
                 </Grid>
