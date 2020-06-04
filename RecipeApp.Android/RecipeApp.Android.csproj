@@ -64,6 +64,7 @@
     <Compile Include="CustomEntryRenderer_Droid.cs" />
     <Compile Include="CustomPickerRenderer_Droid.cs" />
     <Compile Include="CustomSearchBarRenderer_Droid.cs" />
+    <Compile Include="CustomXFXComboBoxRenderer_Droid.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

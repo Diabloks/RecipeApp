@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Xfx;
 
 namespace RecipeApp.Droid
 {
@@ -19,6 +20,7 @@ namespace RecipeApp.Droid
 
             base.OnCreate(savedInstanceState);
 
+            XfxControls.Init();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());

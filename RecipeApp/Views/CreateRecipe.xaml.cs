@@ -8,10 +8,13 @@ using RecipeApp.Models;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
+using Xfx;
 using System.Windows.Input;
+using System.ComponentModel;
+using System.Linq;
 
 namespace RecipeApp.Views
-{
+{ 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CreateRecipe : ContentPage
     {
@@ -22,6 +25,8 @@ namespace RecipeApp.Views
         private List<byte[]> imgBytes { get; set; }
         private ObservableCollection<Ingredient> ingredients { get; set; }
         private List<Product> products { get; set; }
+        private ObservableCollection<string> productsNames { get; set; }
+
         private List<string> countType = new List<string>() { "штук", "гр", "кг", "ст.лож." };
         private List<string> timeType = new List<string>() { "минут", "часов", "дней" };
 
@@ -42,12 +47,22 @@ namespace RecipeApp.Views
             PickerTimeType.SelectedItem = timeType[0];
 
             object obj = "";
-            if (Application.Current.Properties.TryGetValue("ProductsList", out obj)) ;
-            products = obj as List<Product>;
-            IngredientsPicker.ItemsSource = products;
-            IngredientsPicker.SelectedItem = products[0];
-
+            if (Application.Current.Properties.TryGetValue("ProductsList", out obj))
+                products = obj as List<Product>;
+            else
+                products = new List<Product>();
+            productsNames = new ObservableCollection<string>();
+            if(products != null)
+                foreach(Product prod in products)
+                    productsNames.Add(prod.name);
+            IngredientsPicker.ItemsSource = productsNames;
+            IngredientsPicker.SortingAlgorithm = this.SortingAlgorithm;
         }
+
+        public Func<string, ICollection<string>, ICollection<string>> SortingAlgorithm { get; } = (text, values) => values
+            .Where(x => x.ToLower().StartsWith(text.ToLower()))
+            .OrderBy(x => x)
+            .ToList();
 
         protected async override void OnAppearing()
         {
@@ -200,35 +215,33 @@ namespace RecipeApp.Views
             }
         }
 
-        private void PickerIngredients_Changed(object sender, EventArgs e)
-        {
-            if (EntryIngredientsCount.Text != null)
-            {
-                Ingredient ingr = new Ingredient();
-                Product pr = (sender as Picker).SelectedItem as Product;
-                ingr.product = pr;
-                ingr.count = int.Parse(EntryIngredientsCount.Text);
-                ingr.countType = PickerCountType.SelectedItem.ToString();
-                ingredients.Add(ingr);
-                EntryIngredientsCount.Text = null;
-                CollectionViewIngredients.IsVisible = true;
-                CollectionViewIngredients.HeightRequest = 35 * ingredients.Count;
-            }
-        }
-
         private void EntryIngredientsCount_Completed(object sender, EventArgs e)
         {
-            if (IngredientsPicker.SelectedItem != null)
+            if (IngredientsPicker.SelectedItem != null && products != null)
             {
+                string selected = IngredientsPicker.SelectedItem.ToString();
                 Ingredient ingr = new Ingredient();
-                Product pr = IngredientsPicker.SelectedItem as Product;
-                ingr.product = pr;
-                ingr.count = int.Parse(EntryIngredientsCount.Text);
-                ingr.countType = PickerCountType.SelectedItem.ToString();
-                ingredients.Add(ingr);
-                EntryIngredientsCount.Text = null;
-                CollectionViewIngredients.IsVisible = true;
-                CollectionViewIngredients.HeightRequest = 35 * ingredients.Count;
+                Product pr = null;
+                for (int i=0; i<products.Count; i++)
+                {
+                    if (products[i].name == selected)
+                    {
+                        pr = products[i];
+                        break;
+                    }
+                }
+                if (pr != null)
+                {
+                    ingr.product = pr;
+                    ingr.count = int.Parse(EntryIngredientsCount.Text);
+                    ingr.countType = PickerCountType.SelectedItem.ToString();
+                    ingredients.Add(ingr);
+                    EntryIngredientsCount.Text = null;
+                    IngredientsPicker.Text = string.Empty;
+                    IngredientsPicker.SelectedItem = null;
+                    CollectionViewIngredients.IsVisible = true;
+                    CollectionViewIngredients.HeightRequest = 35 * ingredients.Count;
+                }
             }
         }
 

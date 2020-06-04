@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
     mc:Ignorable="d"
     x:Class="RecipeApp.Views.CreateRecipe">
     <ContentPage.Content>
@@ -184,10 +185,10 @@
                                             <RowDefinition Height="35" />
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="150" />
+                                            <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="80" />
                                             <ColumnDefinition Width="80" />
-                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="100" />
                                         </Grid.ColumnDefinitions>
                                         <Label Grid.Column="0" Text="{Binding product.name}" TextColor="#000" FontSize ="18" HorizontalTextAlignment="Center"/>
                                         <Label Grid.Column="1" Text="-" TextColor="#000" FontSize ="18" HorizontalTextAlignment="Center"/>
@@ -201,9 +202,10 @@
                                Grid.Row="2" Grid.Column="0" 
                                VerticalOptions="Center" HorizontalOptions="FillAndExpand"
                                HasShadow="False">
-                            <Picker x:Name="IngredientsPicker" ItemsSource="{Binding product}" ItemDisplayBinding="{Binding name}"
-                                    Margin="0,-5,0,-5" TextColor="Black" FontSize ="18" Grid.Row="1" Grid.Column="0"
-                                    HorizontalOptions="CenterAndExpand" VerticalOptions="Center" SelectedIndexChanged="PickerIngredients_Changed"/>
+                            <xfx:XfxComboBox x:Name="IngredientsPicker" BackgroundColor="Transparent" Placeholder="Введите ингредиент"
+                                             IsTextPredictionEnabled="True" ErrorDisplay="None"
+                                    Margin="2,-15,2,-5" TextColor="Black" FontSize ="18" Grid.Row="1" Grid.Column="0"
+                                    HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
                         </Frame>
                         <Frame HeightRequest="35" WidthRequest="40" 
                                CornerRadius="10" BackgroundColor="#F4F4F8" BorderColor="#26808080" 
